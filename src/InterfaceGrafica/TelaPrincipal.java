@@ -51,7 +51,7 @@ private TtelaExcluir tExcluir;
             }
         });
 
-        bBuscar.setText("Filtrar");
+        bBuscar.setText("Filtrar por cpf");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bBuscarActionPerformed(evt);
@@ -98,11 +98,11 @@ private TtelaExcluir tExcluir;
                 .addComponent(jLabel1)
                 .addGap(69, 69, 69)
                 .addComponent(bCadastrar)
-                .addGap(42, 42, 42)
+                .addGap(29, 29, 29)
                 .addComponent(bBuscar)
-                .addGap(48, 48, 48)
+                .addGap(28, 28, 28)
                 .addComponent(bExcluir)
-                .addGap(18, 18, 18)
+                .addGap(51, 51, 51)
                 .addComponent(Bsair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

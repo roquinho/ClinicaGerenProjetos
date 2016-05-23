@@ -6,26 +6,24 @@ import java.util.Objects;
 
 public class ResultadosExames implements Serializable {
  
-      private Pacientes paciente;
-      private Long ID;
-      private Medicos medico;
+      private Long idResultadoExames;
       private Exames exame;
+      private String diagnostico;
 
       public ResultadosExames() {
           
-      }
-      
-      public ResultadosExames(Exames exame){
+      }      
+      public ResultadosExames(Long idResultadoExames,Exames exame){
           this.exame = exame;
+          this.idResultadoExames = idResultadoExames;
       }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 17 * hash + Objects.hashCode(this.paciente);
-        hash = 17 * hash + Objects.hashCode(this.ID);
-        hash = 17 * hash + Objects.hashCode(this.medico);
+        hash = 17 * hash + Objects.hashCode(this.idResultadoExames);
         hash = 17 * hash + Objects.hashCode(this.exame);
+        hash = 17 * hash + Objects.hashCode(this.diagnostico);
         return hash;
     }
 
@@ -41,13 +39,10 @@ public class ResultadosExames implements Serializable {
             return false;
         }
         final ResultadosExames other = (ResultadosExames) obj;
-        if (!Objects.equals(this.paciente, other.paciente)) {
+        if (!Objects.equals(this.diagnostico, other.diagnostico)) {
             return false;
         }
-        if (!Objects.equals(this.ID, other.ID)) {
-            return false;
-        }
-        if (!Objects.equals(this.medico, other.medico)) {
+        if (!Objects.equals(this.idResultadoExames, other.idResultadoExames)) {
             return false;
         }
         if (!Objects.equals(this.exame, other.exame)) {
@@ -58,12 +53,17 @@ public class ResultadosExames implements Serializable {
 
     @Override
     public String toString() {
-        return "ResultadosExames{" + "paciente=" + paciente + ", ID=" + ID + ", medico=" + medico + ", exame=" + exame + '}';
+        return "ResultadosExames{" + "idResultadoExames=" + idResultadoExames + ", exame=" + exame + ", diagnostico=" + diagnostico + '}';
     }
 
-      
-    
-    
+    public Long getIdResultadoExames() {
+        return idResultadoExames;
+    }
+
+    public void setIdResultadoExames(Long idResultadoExames) {
+        this.idResultadoExames = idResultadoExames;
+    }
+
     public Exames getExame() {
         return exame;
     }
@@ -71,31 +71,14 @@ public class ResultadosExames implements Serializable {
     public void setExame(Exames exame) {
         this.exame = exame;
     }
-    
- 
-    public Medicos getMedico() {
-        return medico;
+
+    public String getDiagnostico() {
+        return diagnostico;
     }
 
-    public void setMedico(Medicos medico) {
-        this.medico = medico;
-    }
-      
- 
-    public Long getID() {
-        return ID;
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-
-    public Pacientes getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Pacientes paciente) {
-        this.paciente = paciente;
-    }
-    
+   
 }

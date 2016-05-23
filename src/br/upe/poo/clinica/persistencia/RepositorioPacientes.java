@@ -31,7 +31,7 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
      this.stm.setString(1,((Pacientes) paciente).getNome());
      this.stm.setString(2,((Pacientes) paciente).getTelefone());
      this.stm.setString(3,((Pacientes) paciente).getEndereco());
-     this.stm.setString(4,((Pacientes) paciente).getCpf());
+     this.stm.setLong(4,((Pacientes) paciente).getCpf());
      this.stm.setString(5,((Pacientes) paciente).getSexo());
 
      
@@ -50,7 +50,7 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
     }
         
     @Override
-    public Pacientes buscarPacienteCpf(String cpf) {
+    public Pacientes buscarPacienteCpf(Long cpf) {
       this.conexao = new ConexaoBancoDeDados().conectar("root", "12345","localhost", "clinica");
        Pacientes paciente = new Pacientes();
         try{	    	 
@@ -58,10 +58,10 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
 	    this.stm = conexao.prepareStatement(sql);
 	        this.rs = stm.executeQuery();
        		    while(this.rs.next()){	 				
-	 		if(cpf.equals(this.rs.getString("cpf"))){	 			
+	 		if(cpf.equals(this.rs.getLong("cpf"))){	 			
 	 		        paciente.setNome(this.rs.getString("nome"));
 	         		paciente.setEndereco(this.rs.getString("endereco"));
-	 			paciente.setCpf(this.rs.getString("cpf"));
+	 			paciente.setCpf(this.rs.getLong("cpf"));
 	 			paciente.setTelefone(this.rs.getString("telefone"));
 	 			paciente.setSexo(this.rs.getString("sexo"));	 					 
 	 				}
@@ -94,7 +94,7 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
                             Pacientes paciente = new Pacientes();
 	 		        paciente.setNome(this.rs.getString("nome"));
 	         		paciente.setEndereco(this.rs.getString("endereco"));
-	 			paciente.setCpf(this.rs.getString("cpf"));
+	 			paciente.setCpf(this.rs.getLong("cpf"));
 	 			paciente.setTelefone(this.rs.getString("telefone"));
 	 			paciente.setSexo(this.rs.getString("sexo"));
                                   pacientes.add(paciente);
@@ -127,7 +127,7 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
 	    	 this.stm.setString(2, paciente.getEndereco());
 	    	 this.stm.setString(3, paciente.getSexo());
 	    	 this.stm.setString(4, paciente.getTelefone());
-	    	 this.stm.setString(5,paciente.getCpf());	    			   
+	    	 this.stm.setLong(5,paciente.getCpf());	    			   
 	    	 this.stm.setString(6,paciente.getNome());
 	    			     
 	    	    this.stm.execute();
@@ -151,10 +151,10 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
 		 	this.stm = conexao.prepareStatement(sql);
 		 	 this.rs=stm.executeQuery();		 	
 		 	  while(this.rs.next()){		  		
-	    	            if(paciente.getCpf().equals(this.rs.getString("cpf"))){	    			    
+	    	            if(paciente.getCpf().equals(this.rs.getLong("cpf"))){	    			    
 	    	                String sqlexcluir = "delete from pacientes where cpf =?" ;	    	
 	    	                  this.stm = conexao.prepareStatement(sqlexcluir);				
-	    	                          this.stm.setString(1,paciente.getCpf());
+	    	                          this.stm.setLong(1,paciente.getCpf());
 			                    this.stm.execute();
                              }
                           }

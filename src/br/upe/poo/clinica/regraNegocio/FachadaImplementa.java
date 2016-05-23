@@ -17,7 +17,7 @@ public class FachadaImplementa implements Fachada {
     }
 
     @Override
-    public Pacientes buscarPacienteCpf(String cpf) throws RegraNegocioPacienteBuscarPacienteException {
+    public Pacientes buscarPacienteCpf(Long cpf) throws RegraNegocioPacienteBuscarPacienteException {
         return pacientes.buscarPacienteCpf(cpf);
     }
 

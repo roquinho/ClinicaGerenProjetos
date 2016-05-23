@@ -9,7 +9,7 @@ public interface InterfaceRegraNegocioPacientes {
     
     public void cadastrarPaciente(Pacientes paciente)throws RegraNegocioPacientesCadastrarException;
     
-    public Pacientes buscarPacienteCpf(String cpf)throws RegraNegocioPacienteBuscarPacienteException;
+    public Pacientes buscarPacienteCpf(Long cpf)throws RegraNegocioPacienteBuscarPacienteException;
     
     public List<Pacientes> buscarPacienteNome(String nome)throws RegraNegocioPacienteBuscarPacienteException;
     

@@ -15,7 +15,7 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
      public RegraNegocioPaciente() {
          rp = new RepositorioPacientes();
      }
-     
+     //falta tratar o tamanho do cpf
      
     @Override
     public void cadastrarPaciente(Pacientes paciente)throws RegraNegocioPacientesCadastrarException {
@@ -28,9 +28,12 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
         if(paciente.getCpf()==null) {
             throw new RegraNegocioPacientesCadastrarException();
         }
-        if(paciente.getCpf().length()>11) {
+        /*if(paciente.getCpf()>11) {
             throw new RegraNegocioPacientesCadastrarException();
         }
+        if(paciente.getCpf()<11) {
+            throw new RegraNegocioPacientesCadastrarException();
+        }*/
 
         else {
             rp.cadastrarPaciente(paciente);
@@ -38,18 +41,18 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
             }
 
     @Override
-    public Pacientes buscarPacienteCpf(String cpf) throws RegraNegocioPacienteBuscarPacienteException {
+    public Pacientes buscarPacienteCpf(Long cpf) throws RegraNegocioPacienteBuscarPacienteException {
         Pacientes paciente = null;
         
        if(cpf == null){
            throw new RegraNegocioPacienteBuscarPacienteException();
        }
-       if(cpf.length()>11) {
+       /*if(cpf>11) {
            throw new RegraNegocioPacienteBuscarPacienteException();
        }
-       if(cpf.length()<11) {
+       if(cpf<11) {
            throw new RegraNegocioPacienteBuscarPacienteException();
-       }
+       }*/
        else {
           paciente = rp.buscarPacienteCpf(cpf);
        }       
@@ -79,12 +82,12 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
         if(paciente.getCpf()==null) {
             throw new RegraNegocioAtualizarPacientesException();
         }
-        if(paciente.getCpf().length()>11) {
+       /* if(paciente.getCpf()>11) {
             throw new RegraNegocioAtualizarPacientesException();
         }
-        if(paciente.getCpf().length()<11) {
+        if(paciente.getCpf()<11) {
             throw new RegraNegocioAtualizarPacientesException();
-        }
+        }*/
         
         else {
             rp.atualizarPaciente(paciente);

@@ -7,45 +7,38 @@ import java.util.Objects;
 public class Medicos implements Serializable {
     
 	private String nome;
-	private long cpf;
+	private Long cpf;
 	private String endereco;
-	private long telefone;
+	private Long telefone;
 	private String loginNome;
 	private String senha;
-	private long crm;
-	private List<Pacientes>pacientes;
+	private Long crm;
 	private List<Consultas>consultas;
-	private List<Exames>exames;
-	private List<ResultadosExames>resultadosExames;
-	private List<Especialidades>especialidades;
 	
 	 public Medicos() {
 		 
 	 }
-	 public Medicos(String nome,String senha,String endereco,long telefone,String login,long crm) {
+	 public Medicos(Long cpf,String nome,String senha,String endereco,Long telefone,String login,Long crm) {
 		 this.endereco = endereco;
 		 this.nome = nome;
 		 this.telefone = telefone;
 		 this.senha = senha;
 		 this.loginNome = login;
-		 this.crm = crm;		 
+		 this.crm = crm;
+                 this.cpf = cpf;
 	 }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.nome);
-        hash = 97 * hash + (int) (this.cpf ^ (this.cpf >>> 32));
-        hash = 97 * hash + Objects.hashCode(this.endereco);
-        hash = 97 * hash + (int) (this.telefone ^ (this.telefone >>> 32));
-        hash = 97 * hash + Objects.hashCode(this.loginNome);
-        hash = 97 * hash + Objects.hashCode(this.senha);
-        hash = 97 * hash + (int) (this.crm ^ (this.crm >>> 32));
-        hash = 97 * hash + Objects.hashCode(this.pacientes);
-        hash = 97 * hash + Objects.hashCode(this.consultas);
-        hash = 97 * hash + Objects.hashCode(this.exames);
-        hash = 97 * hash + Objects.hashCode(this.resultadosExames);
-        hash = 97 * hash + Objects.hashCode(this.especialidades);
+        hash = 41 * hash + Objects.hashCode(this.nome);
+        hash = 41 * hash + Objects.hashCode(this.cpf);
+        hash = 41 * hash + Objects.hashCode(this.endereco);
+        hash = 41 * hash + Objects.hashCode(this.telefone);
+        hash = 41 * hash + Objects.hashCode(this.loginNome);
+        hash = 41 * hash + Objects.hashCode(this.senha);
+        hash = 41 * hash + Objects.hashCode(this.crm);
+        hash = 41 * hash + Objects.hashCode(this.consultas);
         return hash;
     }
 
@@ -61,15 +54,6 @@ public class Medicos implements Serializable {
             return false;
         }
         final Medicos other = (Medicos) obj;
-        if (this.cpf != other.cpf) {
-            return false;
-        }
-        if (this.telefone != other.telefone) {
-            return false;
-        }
-        if (this.crm != other.crm) {
-            return false;
-        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
@@ -82,19 +66,16 @@ public class Medicos implements Serializable {
         if (!Objects.equals(this.senha, other.senha)) {
             return false;
         }
-        if (!Objects.equals(this.pacientes, other.pacientes)) {
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefone, other.telefone)) {
+            return false;
+        }
+        if (!Objects.equals(this.crm, other.crm)) {
             return false;
         }
         if (!Objects.equals(this.consultas, other.consultas)) {
-            return false;
-        }
-        if (!Objects.equals(this.exames, other.exames)) {
-            return false;
-        }
-        if (!Objects.equals(this.resultadosExames, other.resultadosExames)) {
-            return false;
-        }
-        if (!Objects.equals(this.especialidades, other.especialidades)) {
             return false;
         }
         return true;
@@ -102,89 +83,73 @@ public class Medicos implements Serializable {
 
     @Override
     public String toString() {
-        return "Medicos{" + "nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", loginNome=" + loginNome + ", senha=" + senha + ", crm=" + crm + ", pacientes=" + pacientes + ", consultas=" + consultas + ", exames=" + exames + ", resultadosExames=" + resultadosExames + ", especialidades=" + especialidades + '}';
+        return "Medicos{" + "nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", loginNome=" + loginNome + ", senha=" + senha + ", crm=" + crm + ", consultas=" + consultas + '}';
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Long getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(Long cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public Long getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Long telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getLoginNome() {
+        return loginNome;
+    }
+
+    public void setLoginNome(String loginNome) {
+        this.loginNome = loginNome;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Long getCrm() {
+        return crm;
+    }
+
+    public void setCrm(Long crm) {
+        this.crm = crm;
+    }
+
+    public List<Consultas> getConsultas() {
+        return consultas;
+    }
+
+    public void setConsultas(List<Consultas> consultas) {
+        this.consultas = consultas;
+    }
+ 
          
-         
-         
-         
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public long getCpf() {
-		return cpf;
-	}
-	public void setCpf(long cpf) {
-		this.cpf = cpf;
-	}
-	public String getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-	public long getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(long telefone) {
-		this.telefone = telefone;
-	}
-	public String getLoginNome() {
-		return loginNome;
-	}
-	public void setLoginNome(String loginNome) {
-		this.loginNome = loginNome;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	public long getCrm() {
-		return crm;
-	}
-	public void setCrm(long crm) {
-		this.crm = crm;
-	}
-
-	public List<Pacientes> getPacientes() {
-		return pacientes;
-	}
-	public void setPacientes(List<Pacientes> pacientes) {
-		this.pacientes = pacientes;
-	}
-
-	public List<Consultas> getConsultas() {
-		return consultas;
-	}
-	public void setConsultas(List<Consultas> consultas) {
-		this.consultas = consultas;
-	}
-
-	public List<Exames> getExames() {
-		return exames;
-	}
-	public void setExames(List<Exames> exames) {
-		this.exames = exames;
-	}
-
-	public List<ResultadosExames> getResultadosExames() {
-		return resultadosExames;
-	}
-	public void setResultadosExames(List<ResultadosExames> resultadosExames) {
-		this.resultadosExames = resultadosExames;
-	}
-
-	public List<Especialidades> getEspecialidades() {
-		return especialidades;
-	}
-	public void setEspecialidades(List<Especialidades> especialidades) {
-		this.especialidades = especialidades;
-	}
 		
 }

@@ -9,7 +9,7 @@ public interface InterfaceRepositorioPacientes {
     
     public void cadastrarPaciente(Pacientes paciente);
     
-    public Pacientes buscarPacienteCpf(String cpf);
+    public Pacientes buscarPacienteCpf(Long cpf);
     
     public List<Pacientes> buscarPacienteNome(String nome);
     

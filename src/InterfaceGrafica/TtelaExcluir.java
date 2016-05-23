@@ -126,9 +126,10 @@ public class TtelaExcluir extends javax.swing.JFrame {
     }//GEN-LAST:event_TextExcluirActionPerformed
 
     private void ExcluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirButtonActionPerformed
+       Long cpf = Long.parseLong(TextExcluir.getText());
         try {
             Fachada rp = new FachadaImplementa();
-            Pacientes paciente = rp.buscarPacienteCpf(TextExcluir.getText());
+            Pacientes paciente = rp.buscarPacienteCpf(cpf);
             try {
                 rp.deletarPaciente(paciente);// TODO add your handling code here:
             } catch (RegraNegocioDeletarPacientesException ex) {

@@ -137,9 +137,10 @@ public class TelaFiltrar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButoonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButoonFiltrarActionPerformed
+       Long cpf = Long.parseLong(CpfText.getText());
         try {
             Fachada rp = new FachadaImplementa();
-            Pacientes paciente = rp.buscarPacienteCpf(CpfText.getText());
+            Pacientes paciente = rp.buscarPacienteCpf(cpf);
             jTable1.setValueAt(paciente.getNome(), 0, 0);
             jTable1.setValueAt(paciente.getCpf(), 0, 1);
             jTable1.setValueAt(paciente.getEndereco(), 0, 2);

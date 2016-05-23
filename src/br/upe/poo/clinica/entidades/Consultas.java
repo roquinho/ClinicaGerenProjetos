@@ -3,40 +3,41 @@ package br.upe.poo.clinica.entidades;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 public class Consultas implements Serializable {
     
-        private Long NumeroConsulta;
+        private Long numeroConsulta;
 	private Date diaConsulta;
 	private Date horaConsulta;
-	private Especialidades tipoEspecialidade;
 	private Pacientes paciente;
 	private boolean situacaoConsulta;
 	private DadosConsultas dadosConsulta;
 	private Medicos medico;
+        private List<Exames> exames;
 	
             public Consultas() {
                 
             }
-	    public Consultas(Pacientes paciente,Date diaConsulta,Date horaConsulta,Especialidades especialidade,Medicos medico) {
+	    public Consultas(Long numeroConsulta,Pacientes paciente,Date diaConsulta,Date horaConsulta,Medicos medico) {
                 this.diaConsulta = diaConsulta;
 	    	this.horaConsulta = horaConsulta;
-                this.tipoEspecialidade = especialidade;
 	    	this.paciente = paciente;
-                this.medico = medico;	    		  
+                this.medico = medico;
+                this.numeroConsulta = numeroConsulta;
 	    }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.NumeroConsulta);
-        hash = 83 * hash + Objects.hashCode(this.diaConsulta);
-        hash = 83 * hash + Objects.hashCode(this.horaConsulta);
-        hash = 83 * hash + Objects.hashCode(this.tipoEspecialidade);
-        hash = 83 * hash + Objects.hashCode(this.paciente);
-        hash = 83 * hash + (this.situacaoConsulta ? 1 : 0);
-        hash = 83 * hash + Objects.hashCode(this.dadosConsulta);
-        hash = 83 * hash + Objects.hashCode(this.medico);
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(this.numeroConsulta);
+        hash = 17 * hash + Objects.hashCode(this.diaConsulta);
+        hash = 17 * hash + Objects.hashCode(this.horaConsulta);
+        hash = 17 * hash + Objects.hashCode(this.paciente);
+        hash = 17 * hash + (this.situacaoConsulta ? 1 : 0);
+        hash = 17 * hash + Objects.hashCode(this.dadosConsulta);
+        hash = 17 * hash + Objects.hashCode(this.medico);
+        hash = 17 * hash + Objects.hashCode(this.exames);
         return hash;
     }
 
@@ -55,16 +56,13 @@ public class Consultas implements Serializable {
         if (this.situacaoConsulta != other.situacaoConsulta) {
             return false;
         }
-        if (!Objects.equals(this.NumeroConsulta, other.NumeroConsulta)) {
+        if (!Objects.equals(this.numeroConsulta, other.numeroConsulta)) {
             return false;
         }
         if (!Objects.equals(this.diaConsulta, other.diaConsulta)) {
             return false;
         }
         if (!Objects.equals(this.horaConsulta, other.horaConsulta)) {
-            return false;
-        }
-        if (!Objects.equals(this.tipoEspecialidade, other.tipoEspecialidade)) {
             return false;
         }
         if (!Objects.equals(this.paciente, other.paciente)) {
@@ -76,21 +74,23 @@ public class Consultas implements Serializable {
         if (!Objects.equals(this.medico, other.medico)) {
             return false;
         }
+        if (!Objects.equals(this.exames, other.exames)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Consultas{" + "NumeroConsulta=" + NumeroConsulta + ", diaConsulta=" + diaConsulta + ", horaConsulta=" + horaConsulta + ", tipoEspecialidade=" + tipoEspecialidade + ", paciente=" + paciente + ", situacaoConsulta=" + situacaoConsulta + ", dadosConsulta=" + dadosConsulta  + ", medico=" + medico + '}';
+        return "Consultas{" + "NumeroConsulta=" + numeroConsulta + ", diaConsulta=" + diaConsulta + ", horaConsulta=" + horaConsulta + ", paciente=" + paciente + ", situacaoConsulta=" + situacaoConsulta + ", dadosConsulta=" + dadosConsulta + ", medico=" + medico + ", exames=" + exames + '}';
     }
-
-                
+    
                 public Long getNumeroConsulta() {
-                    return NumeroConsulta;
+                    return numeroConsulta;
                  }
 
-                public void setNumeroConsulta(Long NumeroConsulta) {
-                    this.NumeroConsulta = NumeroConsulta;
+                public void setNumeroConsulta(Long numeroConsulta) {
+                    this.numeroConsulta = numeroConsulta;
                  }
 		public Date getDiaConsulta() {
 			return diaConsulta;
@@ -104,13 +104,6 @@ public class Consultas implements Serializable {
 		}
 		public void setHoraConsulta(Date horaConsulta) {
 			this.horaConsulta = horaConsulta;
-		}
-                
-		public Especialidades getTipoEspecialidade() {
-			return tipoEspecialidade;
-		}
-		public void setTipoEspecialidade(Especialidades tipoEspecialidade) {
-			this.tipoEspecialidade = tipoEspecialidade;
 		}
 
 		public Pacientes getPaciente() {
@@ -139,6 +132,14 @@ public class Consultas implements Serializable {
 		public void setMedico(Medicos medico) {
 			this.medico = medico;
 		}
-	    
+
+                public List<Exames> getExames() {
+                         return exames;
+                }
+
+                public void setExames(List<Exames> exames) {
+                         this.exames = exames;
+                }
+	        
 
 }

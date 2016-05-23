@@ -5,37 +5,37 @@ import java.sql.Date;
 import java.util.Objects;
 
 public class Exames implements Serializable {
-
     
-        private Long IDExame;
+        private Long idExame;
 	private Date dataExame;
 	private Date horaExame;
 	private String tipoExame;
 	private Pacientes paciente;
-	private Medicos medico;
 	private ResultadosExames resultadoExame;
-        private Especialidades especialidade;
-	 
+	private Consultas consulta; 
+        
 	 public Exames() {
 		 
 	 }
          
-	 public Exames(String tipoExame,Especialidades especialidades) {
+	 public Exames(Long idExame,String tipoExame,Date dataExame,Date horaExame,Pacientes paciente) {
                  this.tipoExame = tipoExame;
-                 this.especialidade = especialidades;
+                 this.dataExame = dataExame;
+                 this.horaExame = horaExame;
+                 this.paciente = paciente;
+                 this.idExame = idExame;
 	 }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.IDExame);
-        hash = 37 * hash + Objects.hashCode(this.dataExame);
-        hash = 37 * hash + Objects.hashCode(this.horaExame);
-        hash = 37 * hash + Objects.hashCode(this.tipoExame);
-        hash = 37 * hash + Objects.hashCode(this.paciente);
-        hash = 37 * hash + Objects.hashCode(this.medico);
-        hash = 37 * hash + Objects.hashCode(this.resultadoExame);
-        hash = 37 * hash + Objects.hashCode(this.especialidade);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.idExame);
+        hash = 97 * hash + Objects.hashCode(this.dataExame);
+        hash = 97 * hash + Objects.hashCode(this.horaExame);
+        hash = 97 * hash + Objects.hashCode(this.tipoExame);
+        hash = 97 * hash + Objects.hashCode(this.paciente);
+        hash = 97 * hash + Objects.hashCode(this.resultadoExame);
+        hash = 97 * hash + Objects.hashCode(this.consulta);
         return hash;
     }
 
@@ -54,7 +54,7 @@ public class Exames implements Serializable {
         if (!Objects.equals(this.tipoExame, other.tipoExame)) {
             return false;
         }
-        if (!Objects.equals(this.IDExame, other.IDExame)) {
+        if (!Objects.equals(this.idExame, other.idExame)) {
             return false;
         }
         if (!Objects.equals(this.dataExame, other.dataExame)) {
@@ -66,13 +66,10 @@ public class Exames implements Serializable {
         if (!Objects.equals(this.paciente, other.paciente)) {
             return false;
         }
-        if (!Objects.equals(this.medico, other.medico)) {
-            return false;
-        }
         if (!Objects.equals(this.resultadoExame, other.resultadoExame)) {
             return false;
         }
-        if (!Objects.equals(this.especialidade, other.especialidade)) {
+        if (!Objects.equals(this.consulta, other.consulta)) {
             return false;
         }
         return true;
@@ -80,66 +77,65 @@ public class Exames implements Serializable {
 
     @Override
     public String toString() {
-        return "Exames{" + "IDExame=" + IDExame + ", dataExame=" + dataExame + ", horaExame=" + horaExame + ", tipoExame=" + tipoExame + ", paciente=" + paciente + ", medico=" + medico + ", resultadoExame=" + resultadoExame + ", especialidade=" + especialidade + '}';
+        return "Exames{" + "idExame=" + idExame + ", dataExame=" + dataExame + ", horaExame=" + horaExame + ", tipoExame=" + tipoExame + ", paciente=" + paciente + ", resultadoExame=" + resultadoExame + ", consulta=" + consulta + '}';
     }
 
-    
+    public Long getIdExame() {
+        return idExame;
+    }
 
-         public Long getIDExame() {
-                 return IDExame;
-          }
-         public void setIDExame(Long IDExame) {
-                this.IDExame = IDExame;
-          }
-	public Date getDataExame() {
-		return dataExame;
-	  }
-	public void setDataExame(Date dataExame) {
-		this.dataExame = dataExame;
-	}
-	public Date getHoraExame() {
-		return horaExame;
-	}
-	public void setHoraExame(Date horaExame) {
-		this.horaExame = horaExame;
-	}
-	public String getTipoExame() {
-		return tipoExame;
-	}
-	public void setTipoExame(String tipoExame) {
-		this.tipoExame = tipoExame;
-	}
+    public void setIdExame(Long idExame) {
+        this.idExame = idExame;
+    }
 
-	public Pacientes getPaciente() {
-		return paciente;
-	}
-	public void setPaciente(Pacientes paciente) {
-		this.paciente = paciente;
-	}
-        
-	public Medicos getMedico() {
-		return medico;
-	}
-	public void setMedico(Medicos medico) {
-		this.medico = medico;
-	}
-        
-	public ResultadosExames getResultadoExame() {
-		return resultadoExame;
-	}
-	public void setResultadoExame(ResultadosExames resultadoExame) {
-		this.resultadoExame = resultadoExame;
-	}
-        
-        public Especialidades getEspecialidade() {
-               return especialidade;
-        }
+    public Date getDataExame() {
+        return dataExame;
+    }
 
-        public void setEspecialidade(Especialidades especialidade) {
-               this.especialidade = especialidade;
-        }
-        
-	 
-	
+    public void setDataExame(Date dataExame) {
+        this.dataExame = dataExame;
+    }
+
+    public Date getHoraExame() {
+        return horaExame;
+    }
+
+    public void setHoraExame(Date horaExame) {
+        this.horaExame = horaExame;
+    }
+
+    public String getTipoExame() {
+        return tipoExame;
+    }
+
+    public void setTipoExame(String tipoExame) {
+        this.tipoExame = tipoExame;
+    }
+
+    public Pacientes getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Pacientes paciente) {
+        this.paciente = paciente;
+    }
+
+    public ResultadosExames getResultadoExame() {
+        return resultadoExame;
+    }
+
+    public void setResultadoExame(ResultadosExames resultadoExame) {
+        this.resultadoExame = resultadoExame;
+    }
+
+    public Consultas getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(Consultas consulta) {
+        this.consulta = consulta;
+    }
+
+    	
 
 }

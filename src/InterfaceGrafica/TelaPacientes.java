@@ -161,12 +161,14 @@ public class TelaPacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_sexoTextItemStateChanged
 
     private void cpfTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTextActionPerformed
-        // TODO add your handling code here:
+          
     }//GEN-LAST:event_cpfTextActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- Fachada fachada = new FachadaImplementa();
- Pacientes paciente = new Pacientes(NomeText.getText(), enderecoText.getText(), telefText.getText(), sexo, cpfText.getText());
+  Long cpf;
+  cpf = Long.parseLong(cpfText.getText());
+    Fachada fachada = new FachadaImplementa();
+      Pacientes paciente = new Pacientes(cpf,NomeText.getText(), enderecoText.getText(), telefText.getText(), sexo);
         try {
             fachada.cadastrarPaciente(paciente);
         } catch (RegraNegocioPacientesCadastrarException ex) {

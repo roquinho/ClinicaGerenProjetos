@@ -43,7 +43,7 @@ private TelaAtualizar tAtualizar;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Tela Clientesl");
+        jLabel1.setText("Tela Pacientes");
 
         bCadastrar.setText("Cadastrar");
         bCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ private TelaAtualizar tAtualizar;
                                     .addComponent(bCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(bExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(AtualiarBotao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 140, Short.MAX_VALUE)))
+                        .addGap(0, 134, Short.MAX_VALUE)))
                 .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(

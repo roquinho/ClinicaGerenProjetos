@@ -7,25 +7,24 @@ import java.util.Objects;
 
 public class Pacientes implements Serializable {
 	private String nome;
-	private Date dataNascimento;
+	private String dataNascimento;
 	private String sexo;
 	private Long cpf;
 	private String endereco;
 	private String telefone;
-	private String loginNome;
-	private String senha;
 	private List<Consultas>consultas;
 	private List<Exames>exames;
 	
 	 public Pacientes() {
 		 
 	 }
-	 public Pacientes(Long cpf,String nome,String endereco,String telefone,String sexo) {             
+	 public Pacientes(Long cpf,String nome,String endereco,String telefone,String sexo,String dataNascimento) {             
 		 this.endereco = endereco;
 		 this.nome = nome;
 		 this.telefone = telefone;		 
 		 this.sexo = sexo;
                  this.cpf = cpf;
+                 this.dataNascimento = dataNascimento;
 	 }
 
     @Override
@@ -37,8 +36,6 @@ public class Pacientes implements Serializable {
         hash = 73 * hash + Objects.hashCode(this.cpf);
         hash = 73 * hash + Objects.hashCode(this.endereco);
         hash = 73 * hash + Objects.hashCode(this.telefone);
-        hash = 73 * hash + Objects.hashCode(this.loginNome);
-        hash = 73 * hash + Objects.hashCode(this.senha);
         hash = 73 * hash + Objects.hashCode(this.consultas);
         hash = 73 * hash + Objects.hashCode(this.exames);
         return hash;
@@ -68,12 +65,6 @@ public class Pacientes implements Serializable {
         if (!Objects.equals(this.telefone, other.telefone)) {
             return false;
         }
-        if (!Objects.equals(this.loginNome, other.loginNome)) {
-            return false;
-        }
-        if (!Objects.equals(this.senha, other.senha)) {
-            return false;
-        }
         if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
             return false;
         }
@@ -91,7 +82,7 @@ public class Pacientes implements Serializable {
 
     @Override
     public String toString() {
-        return "Pacientes{" + "nome=" + nome + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", loginNome=" + loginNome + ", senha=" + senha + ", consultas=" + consultas + ", exames=" + exames + '}';
+        return "Pacientes{" + "nome=" + nome + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + ", consultas=" + consultas + ", exames=" + exames + '}';
     }
 
     public String getNome() {
@@ -102,11 +93,11 @@ public class Pacientes implements Serializable {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -140,22 +131,6 @@ public class Pacientes implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-
-    public String getLoginNome() {
-        return loginNome;
-    }
-
-    public void setLoginNome(String loginNome) {
-        this.loginNome = loginNome;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public List<Consultas> getConsultas() {

@@ -10,7 +10,8 @@ import br.upe.poo.clinica.persistencia.InterfaceRepositorioPacientes;
 import br.upe.poo.clinica.persistencia.RepositorioPacientes;
 import br.upe.poo.clinica.regraNegocio.Fachada;
 import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
-import br.upe.poo.clinica.regraNegocio.RegraNegocioPacientesCadastrarException;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioPacientesCadastrar;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -54,6 +55,8 @@ public class TelaPacientes extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         sairButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        dataNascimentoText = new javax.swing.JFormattedTextField();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -131,7 +134,7 @@ public class TelaPacientes extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, 30));
 
         sairButton.setText("Sair");
         sairButton.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +142,18 @@ public class TelaPacientes extends javax.swing.JFrame {
                 sairButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(sairButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        jPanel4.add(sairButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 80, 30));
+
+        jLabel1.setText("Data de nascimento");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 110, -1));
+
+        dataNascimentoText.setText("  /  /    ");
+        dataNascimentoText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataNascimentoTextActionPerformed(evt);
+            }
+        });
+        jPanel4.add(dataNascimentoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 50, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 400, 430));
 
@@ -165,13 +179,16 @@ public class TelaPacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_cpfTextActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-  Long cpf;
-  cpf = Long.parseLong(cpfText.getText());
+                 
+    Long cpf = new Long(11);
+    cpf = Long.parseLong(cpfText.getText());
+    String dataNascimento = new String();
+    dataNascimento = dataNascimentoText.getText();
     Fachada fachada = new FachadaImplementa();
-      Pacientes paciente = new Pacientes(cpf,NomeText.getText(), enderecoText.getText(), telefText.getText(), sexo);
+      Pacientes paciente = new Pacientes(cpf,NomeText.getText(), enderecoText.getText(), telefText.getText(), sexo,dataNascimento);
         try {
             fachada.cadastrarPaciente(paciente);
-        } catch (RegraNegocioPacientesCadastrarException ex) {
+        } catch (ExceptionRegraNegocioPacientesCadastrar ex) {
             Logger.getLogger(TelaPacientes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -180,13 +197,20 @@ public class TelaPacientes extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_sairButtonActionPerformed
 
+    private void dataNascimentoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataNascimentoTextActionPerformed
+
+
+    }//GEN-LAST:event_dataNascimentoTextActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NomeText;
     private javax.swing.JTextField cpfText;
+    private javax.swing.JFormattedTextField dataNascimentoText;
     private javax.swing.JTextField enderecoText;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

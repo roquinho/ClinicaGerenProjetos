@@ -18,7 +18,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 private TelaPacientes tcadastrar;
 private TelaFiltrar tfiltrar;
 private TtelaExcluir tExcluir;
-
+private TelaAtualizar tAtualizar;
 
     public TelaPrincipal() {
         initComponents();
@@ -39,10 +39,11 @@ private TtelaExcluir tExcluir;
         bBuscar = new javax.swing.JButton();
         bExcluir = new javax.swing.JButton();
         Bsair = new javax.swing.JButton();
+        AtualiarBotao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Tela Principal");
+        jLabel1.setText("Tela Clientesl");
 
         bCadastrar.setText("Cadastrar");
         bCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -51,7 +52,7 @@ private TtelaExcluir tExcluir;
             }
         });
 
-        bBuscar.setText("Filtrar por cpf");
+        bBuscar.setText("Filtrar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bBuscarActionPerformed(evt);
@@ -72,37 +73,51 @@ private TtelaExcluir tExcluir;
             }
         });
 
+        AtualiarBotao.setText("Atualizar");
+        AtualiarBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtualiarBotaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Bsair)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(bCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(173, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Bsair, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(165, 165, 165)
+                                .addComponent(jLabel1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(bBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                                    .addComponent(bCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(AtualiarBotao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 140, Short.MAX_VALUE)))
+                .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(69, 69, 69)
-                .addComponent(bCadastrar)
-                .addGap(29, 29, 29)
-                .addComponent(bBuscar)
-                .addGap(28, 28, 28)
-                .addComponent(bExcluir)
                 .addGap(51, 51, 51)
+                .addComponent(bCadastrar)
+                .addGap(18, 18, 18)
+                .addComponent(bBuscar)
+                .addGap(29, 29, 29)
+                .addComponent(bExcluir)
+                .addGap(18, 18, 18)
+                .addComponent(AtualiarBotao)
+                .addGap(38, 38, 38)
                 .addComponent(Bsair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -140,6 +155,11 @@ private TtelaExcluir tExcluir;
 dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_BsairActionPerformed
 
+    private void AtualiarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualiarBotaoActionPerformed
+       this.tAtualizar = new TelaAtualizar();
+       this.tAtualizar.setVisible(true);
+    }//GEN-LAST:event_AtualiarBotaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,6 +196,7 @@ dispose();        // TODO add your handling code here:
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AtualiarBotao;
     private javax.swing.JButton Bsair;
     private javax.swing.JButton bBuscar;
     private javax.swing.JButton bCadastrar;

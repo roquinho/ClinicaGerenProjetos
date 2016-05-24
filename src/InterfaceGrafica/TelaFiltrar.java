@@ -10,7 +10,8 @@ import br.upe.poo.clinica.persistencia.InterfaceRepositorioPacientes;
 import br.upe.poo.clinica.persistencia.RepositorioPacientes;
 import br.upe.poo.clinica.regraNegocio.Fachada;
 import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
-import br.upe.poo.clinica.regraNegocio.RegraNegocioPacienteBuscarPacienteException;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioPacienteBuscarPaciente;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,16 +43,19 @@ public class TelaFiltrar extends javax.swing.JFrame {
         CpfText = new javax.swing.JTextField();
         ButoonFiltrar = new javax.swing.JButton();
         SairB = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        nomeText = new javax.swing.JTextField();
+        nomejButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Filtra paciente");
+        jLabel1.setText("Filtrar paciente");
 
         label.setText("Digite Cpf");
 
-        ButoonFiltrar.setText("Filtrar");
+        ButoonFiltrar.setText("Filtrar por cpf");
         ButoonFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButoonFiltrarActionPerformed(evt);
@@ -65,27 +69,36 @@ public class TelaFiltrar extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Digite nome");
+
+        nomejButton1.setText("filtra por nome");
+        nomejButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomejButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel1)
+                .addGap(0, 82, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButoonFiltrar)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addComponent(CpfText, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(label)
+                    .addComponent(jLabel2)
+                    .addComponent(SairB, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(SairB, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jLabel1)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(nomejButton1)
+                    .addComponent(ButoonFiltrar)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(CpfText, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                        .addComponent(nomeText))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,22 +109,28 @@ public class TelaFiltrar extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label)
                     .addComponent(CpfText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButoonFiltrar)
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(nomeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(nomejButton1)
+                .addGap(33, 33, 33)
                 .addComponent(SairB)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Cpf", "Endereco", "telefone", "sexo"
+                "Nome", "Cpf", "Endereco", "telefone", "sexo", "data_nascimento"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -122,14 +141,14 @@ public class TelaFiltrar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -146,7 +165,9 @@ public class TelaFiltrar extends javax.swing.JFrame {
             jTable1.setValueAt(paciente.getEndereco(), 0, 2);
             jTable1.setValueAt(paciente.getTelefone(), 0, 3);
             jTable1.setValueAt(paciente.getSexo(), 0, 4);
-        } catch (RegraNegocioPacienteBuscarPacienteException ex) {
+            jTable1.setValueAt(paciente.getDataNascimento(),0,5);
+            
+        } catch (ExceptionRegraNegocioPacienteBuscarPaciente ex) {
             Logger.getLogger(TelaFiltrar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ButoonFiltrarActionPerformed
@@ -155,15 +176,40 @@ public class TelaFiltrar extends javax.swing.JFrame {
  dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_SairBActionPerformed
 
+    private void nomejButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomejButton1ActionPerformed
+        Fachada rp = new FachadaImplementa();
+        List<Pacientes> paciente;
+        try {
+            paciente = rp.buscarPacienteNome(nomeText.getText());
+             for(int i = 0; i <paciente.size(); i++ ) {
+            jTable1.setValueAt(paciente.get(i).getNome(), i, 0);
+            jTable1.setValueAt(paciente.get(i).getCpf(), i, 1);
+            jTable1.setValueAt(paciente.get(i).getEndereco(), i, 2);
+            jTable1.setValueAt(paciente.get(i).getTelefone(), i, 3);
+            jTable1.setValueAt(paciente.get(i).getSexo(), i, 4);
+            jTable1.setValueAt(paciente.get(i).getDataNascimento(),i,5);
+             
+             }
+        } catch (ExceptionRegraNegocioPacienteBuscarPaciente ex) {
+            Logger.getLogger(TelaFiltrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+            
+    }//GEN-LAST:event_nomejButton1ActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButoonFiltrar;
     private javax.swing.JTextField CpfText;
     private javax.swing.JButton SairB;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel label;
+    private javax.swing.JTextField nomeText;
+    private javax.swing.JButton nomejButton1;
     // End of variables declaration//GEN-END:variables
 }

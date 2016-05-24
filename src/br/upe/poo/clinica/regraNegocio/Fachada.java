@@ -6,14 +6,14 @@ import java.util.List;
 
 public interface Fachada {
     
-    public void cadastrarPaciente(Pacientes paciente)throws RegraNegocioPacientesCadastrarException;
+    public void cadastrarPaciente(Pacientes paciente)throws ExceptionRegraNegocioPacientesCadastrar;
     
-    public Pacientes buscarPacienteCpf(Long cpf)throws RegraNegocioPacienteBuscarPacienteException;
+    public Pacientes buscarPacienteCpf(Long cpf)throws ExceptionRegraNegocioPacienteBuscarPaciente;
     
-    public List<Pacientes> buscarPacienteNome(String nome)throws RegraNegocioPacienteBuscarPacienteException;
+    public List<Pacientes> buscarPacienteNome(String nome)throws ExceptionRegraNegocioPacienteBuscarPaciente;
     
-    public void atualizarPaciente(Pacientes paciente)throws RegraNegocioAtualizarPacientesException;
+    public void atualizarPaciente(Pacientes paciente)throws ExceptionRegraNegocioAtualizarPacientes;
     
-    public void deletarPaciente(Pacientes paciente)throws RegraNegocioDeletarPacientesException;
+    public void deletarPaciente(Pacientes paciente)throws ExceptionRegraNegocioDeletarPacientes;
     
 }

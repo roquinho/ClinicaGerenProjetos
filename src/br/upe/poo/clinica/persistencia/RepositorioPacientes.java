@@ -23,7 +23,7 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
     public void cadastrarPaciente(Pacientes paciente) {
       this.conexao = new ConexaoBancoDeDados().conectar("root", "12345","localhost", "clinica");
         try{
-          String sql = "insert into pacientes"+"(nome,telefone,endereco,cpf,sexo)"+"values(?,?,?,?,?)";
+          String sql = "insert into pacientes"+"(nome,telefone,endereco,cpf,sexo,data_nascimento)"+"values(?,?,?,?,?,?)";
 	 
           
             this.stm=conexao.prepareStatement(sql);
@@ -33,7 +33,7 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
      this.stm.setString(3,((Pacientes) paciente).getEndereco());
      this.stm.setLong(4,((Pacientes) paciente).getCpf());
      this.stm.setString(5,((Pacientes) paciente).getSexo());
-
+     this.stm.setString(6,((Pacientes) paciente).getDataNascimento());
      
         this.stm.execute();        
         this.stm.close();
@@ -63,7 +63,8 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
 	         		paciente.setEndereco(this.rs.getString("endereco"));
 	 			paciente.setCpf(this.rs.getLong("cpf"));
 	 			paciente.setTelefone(this.rs.getString("telefone"));
-	 			paciente.setSexo(this.rs.getString("sexo"));	 					 
+	 			paciente.setSexo(this.rs.getString("sexo"));
+                                paciente.setDataNascimento(this.rs.getString("data_nascimento"));
 	 				}
 	 					 				
 	 			}
@@ -86,21 +87,24 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
      this.conexao = new ConexaoBancoDeDados().conectar("root", "12345","localhost", "clinica");
        List<Pacientes>pacientes = new ArrayList();
          try{	    	 
-	  String sql = "select * from pacientes";	    	
-	    this.stm = conexao.prepareStatement(sql);
-	        this.rs = stm.executeQuery();
-       		    while(this.rs.next()){	 				
-	 		if(nome.equals(this.rs.getString("nome"))){
+	  String sql = "select * from pacientes where nome like ?";
+          
+        this.stm = conexao.prepareStatement(sql);
+        this.stm.setString(1,'%'+ nome+'%');
+        this.rs = stm.executeQuery();
+                   
+       		    while(this.rs.next()){
+                        
                             Pacientes paciente = new Pacientes();
 	 		        paciente.setNome(this.rs.getString("nome"));
 	         		paciente.setEndereco(this.rs.getString("endereco"));
 	 			paciente.setCpf(this.rs.getLong("cpf"));
 	 			paciente.setTelefone(this.rs.getString("telefone"));
 	 			paciente.setSexo(this.rs.getString("sexo"));
+                                paciente.setDataNascimento(this.rs.getString("data_nascimento"));
                                   pacientes.add(paciente);
-	 				}
-	 					 				
-	 			}
+	 				}	 					 				
+	 			
 	 			this.stm.close();
 	 			this.rs.close();
                                 this.conexao.close();
@@ -120,15 +124,16 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
     public void atualizarPaciente(Pacientes paciente) {
        this.conexao = new ConexaoBancoDeDados().conectar("root", "12345","localhost", "clinica");
          try{
-	    String sql = "update pacientes set nome=?,"+"endereco=?,"+"sexo=?,"+"telefone=?,"+"cpf=?,"+"where nome=?";
+	    String sql = "update pacientes set nome=?,"+"endereco=?,"+"sexo=?,"+"telefone=?,"+"cpf=?,"+"data_nascimento=? "+"where cpf=?";
 	       this.stm = conexao.prepareStatement(sql);
                
 	         this.stm.setString(1, paciente.getNome());
 	    	 this.stm.setString(2, paciente.getEndereco());
 	    	 this.stm.setString(3, paciente.getSexo());
 	    	 this.stm.setString(4, paciente.getTelefone());
-	    	 this.stm.setLong(5,paciente.getCpf());	    			   
-	    	 this.stm.setString(6,paciente.getNome());
+	    	 this.stm.setLong(5,paciente.getCpf());
+                 this.stm.setString(6,paciente.getDataNascimento());
+	    	 this.stm.setLong(7,paciente.getCpf());
 	    			     
 	    	    this.stm.execute();
 	            this.stm.close();

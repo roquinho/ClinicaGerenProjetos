@@ -10,8 +10,8 @@ import br.upe.poo.clinica.persistencia.InterfaceRepositorioPacientes;
 import br.upe.poo.clinica.persistencia.RepositorioPacientes;
 import br.upe.poo.clinica.regraNegocio.Fachada;
 import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
-import br.upe.poo.clinica.regraNegocio.RegraNegocioDeletarPacientesException;
-import br.upe.poo.clinica.regraNegocio.RegraNegocioPacienteBuscarPacienteException;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioDeletarPacientes;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioPacienteBuscarPaciente;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -132,10 +132,10 @@ public class TtelaExcluir extends javax.swing.JFrame {
             Pacientes paciente = rp.buscarPacienteCpf(cpf);
             try {
                 rp.deletarPaciente(paciente);// TODO add your handling code here:
-            } catch (RegraNegocioDeletarPacientesException ex) {
+            } catch (ExceptionRegraNegocioDeletarPacientes ex) {
                 Logger.getLogger(TtelaExcluir.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (RegraNegocioPacienteBuscarPacienteException ex) {
+        } catch (ExceptionRegraNegocioPacienteBuscarPaciente ex) {
             Logger.getLogger(TtelaExcluir.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ExcluirButtonActionPerformed

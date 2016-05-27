@@ -11,13 +11,13 @@ import java.util.List;
 public interface InterfaceRegraNegocioMedicos {
     
     
-    public void cadastrarMedicos(Medicos medico);
+    public void cadastrarMedicos(Medicos medico)throws ExceptionRegraNegocioCadastrarMedicos;
     
-    public Medicos buscarMedicoCpf(Long cpf);
+    public Medicos buscarMedicoCpf(Long cpf)throws ExceptionRegraNegocioBuscarMedicos;
     
-    public List<Medicos> buscarMedicoNome(String nome);
+    public List<Medicos> buscarMedicoNome(String nome)throws ExceptionRegraNegocioBuscarMedicos;
     
-    public void atualizarMedico(Medicos medico);
+    public void atualizarMedico(Medicos medico)throws ExceptionRegraNegocioAtualizarMedicos;
     
-    public void deletarMedico(Medicos medico);
+    public void deletarMedico(Medicos medico)throws ExceptionRegraNegocioDeletarMedicos;
 }

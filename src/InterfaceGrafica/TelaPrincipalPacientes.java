@@ -1,7 +1,7 @@
 package InterfaceGrafica;
 
 
-import InterfaceGrafica.TelaPacientes;
+import InterfaceGrafica.TelaCadastrarPacientes;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,14 +13,14 @@ import InterfaceGrafica.TelaPacientes;
  *
  * @author manoel
  */
-public class TelaPrincipal extends javax.swing.JFrame {
+public class TelaPrincipalPacientes extends javax.swing.JFrame {
 
-private TelaPacientes tcadastrar;
+private TelaCadastrarPacientes tcadastrar;
 private TelaFiltrar tfiltrar;
 private TtelaExcluir tExcluir;
 private TelaAtualizar tAtualizar;
 
-    public TelaPrincipal() {
+    public TelaPrincipalPacientes() {
         initComponents();
     }
 
@@ -137,7 +137,7 @@ private TelaAtualizar tAtualizar;
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
-        tcadastrar = new TelaPacientes();
+        tcadastrar = new TelaCadastrarPacientes();
          tcadastrar.setVisible(true);
     }//GEN-LAST:event_bCadastrarActionPerformed
 
@@ -177,20 +177,21 @@ dispose();        // TODO add your handling code here:
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                new TelaPrincipalPacientes().setVisible(true);
             }
         });
     }

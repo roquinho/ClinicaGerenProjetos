@@ -21,11 +21,11 @@ import java.util.logging.Logger;
  *
  * @author manoel
  */
-public class TelaPacientes extends javax.swing.JFrame {
+public class TelaCadastrarPacientes extends javax.swing.JFrame {
 
     private String sexo;
     
-    public TelaPacientes() {
+    public TelaCadastrarPacientes() {
         initComponents();
     }
 
@@ -189,7 +189,7 @@ public class TelaPacientes extends javax.swing.JFrame {
         try {
             fachada.cadastrarPaciente(paciente);
         } catch (ExceptionRegraNegocioPacientesCadastrar ex) {
-            Logger.getLogger(TelaPacientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastrarPacientes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

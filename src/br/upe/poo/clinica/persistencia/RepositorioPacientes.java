@@ -24,8 +24,7 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
       this.conexao = new ConexaoBancoDeDados().conectar("root", "12345","localhost", "clinica");
         try{
           String sql = "insert into pacientes"+"(nome,telefone,endereco,cpf,sexo,data_nascimento)"+"values(?,?,?,?,?,?)";
-	 
-          
+	
             this.stm=conexao.prepareStatement(sql);
 
      this.stm.setString(1,((Pacientes) paciente).getNome());
@@ -177,8 +176,7 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
          }
 	
     }
-       
-        
+              
     public Connection getConexao() {
         return conexao;
     }

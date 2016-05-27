@@ -19,12 +19,12 @@ import java.util.logging.Logger;
  *
  * @author manoel
  */
-public class TtelaExcluir extends javax.swing.JFrame {
+public class TelaExcluirPacientes extends javax.swing.JFrame {
 
     /**
      * Creates new form TtelaExcluir
      */
-    public TtelaExcluir() {
+    public TelaExcluirPacientes() {
         initComponents();
     }
 
@@ -133,10 +133,10 @@ public class TtelaExcluir extends javax.swing.JFrame {
             try {
                 rp.deletarPaciente(paciente);// TODO add your handling code here:
             } catch (ExceptionRegraNegocioDeletarPacientes ex) {
-                Logger.getLogger(TtelaExcluir.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TelaExcluirPacientes.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (ExceptionRegraNegocioPacienteBuscarPaciente ex) {
-            Logger.getLogger(TtelaExcluir.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaExcluirPacientes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ExcluirButtonActionPerformed
 

@@ -18,14 +18,14 @@ import java.util.logging.Logger;
  *
  * @author manoel
  */
-public class TelaAtualizar extends javax.swing.JFrame {
+public class TelaAtualizarPacientes extends javax.swing.JFrame {
 
      private Pacientes paciente;
      private  String sexo;
     /**
      * Creates new form TelaAtualizar
      */
-    public TelaAtualizar() {
+    public TelaAtualizarPacientes() {
         initComponents();
     }
 
@@ -161,7 +161,7 @@ public class TelaAtualizar extends javax.swing.JFrame {
          try {
              fachada.atualizarPaciente(this.paciente);
          } catch (ExceptionRegraNegocioAtualizarPacientes ex) {
-             Logger.getLogger(TelaAtualizar.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(TelaAtualizarPacientes.class.getName()).log(Level.SEVERE, null, ex);
          }
     
     
@@ -184,7 +184,7 @@ public class TelaAtualizar extends javax.swing.JFrame {
          try {
             this.paciente = fachada.buscarPacienteCpf(cpf);
          } catch (ExceptionRegraNegocioPacienteBuscarPaciente ex) {
-             Logger.getLogger(TelaAtualizar.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(TelaAtualizarPacientes.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_filtrarjButton1ActionPerformed
 

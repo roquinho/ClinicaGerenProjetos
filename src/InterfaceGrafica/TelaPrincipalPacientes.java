@@ -1,8 +1,5 @@
 package InterfaceGrafica;
 
-
-import InterfaceGrafica.TelaCadastrarPacientes;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,9 +13,9 @@ import InterfaceGrafica.TelaCadastrarPacientes;
 public class TelaPrincipalPacientes extends javax.swing.JFrame {
 
 private TelaCadastrarPacientes tcadastrar;
-private TelaFiltrar tfiltrar;
-private TtelaExcluir tExcluir;
-private TelaAtualizar tAtualizar;
+private TelaFiltrarPacientes tfiltrar;
+private TelaExcluirPacientes tExcluir;
+private TelaAtualizarPacientes tAtualizar;
 
     public TelaPrincipalPacientes() {
         initComponents();
@@ -142,12 +139,12 @@ private TelaAtualizar tAtualizar;
     }//GEN-LAST:event_bCadastrarActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-         tfiltrar = new TelaFiltrar();
+         tfiltrar = new TelaFiltrarPacientes();
           tfiltrar.setVisible(true);
     }//GEN-LAST:event_bBuscarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
-      tExcluir = new TtelaExcluir();
+      tExcluir = new TelaExcluirPacientes();
       tExcluir.setVisible(true);
     }//GEN-LAST:event_bExcluirActionPerformed
 
@@ -156,45 +153,11 @@ dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_BsairActionPerformed
 
     private void AtualiarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualiarBotaoActionPerformed
-       this.tAtualizar = new TelaAtualizar();
+       this.tAtualizar = new TelaAtualizarPacientes();
        this.tAtualizar.setVisible(true);
     }//GEN-LAST:event_AtualiarBotaoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaPrincipalPacientes().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AtualiarBotao;

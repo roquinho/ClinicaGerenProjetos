@@ -19,12 +19,12 @@ import java.util.logging.Logger;
  *
  * @author manoel
  */
-public class TelaFiltrar extends javax.swing.JFrame {
+public class TelaFiltrarPacientes extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaFiltrar
      */
-    public TelaFiltrar() {
+    public TelaFiltrarPacientes() {
         initComponents();
     }
 
@@ -168,7 +168,7 @@ public class TelaFiltrar extends javax.swing.JFrame {
             jTable1.setValueAt(paciente.getDataNascimento(),0,5);
             
         } catch (ExceptionRegraNegocioPacienteBuscarPaciente ex) {
-            Logger.getLogger(TelaFiltrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaFiltrarPacientes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ButoonFiltrarActionPerformed
 
@@ -191,7 +191,7 @@ public class TelaFiltrar extends javax.swing.JFrame {
              
              }
         } catch (ExceptionRegraNegocioPacienteBuscarPaciente ex) {
-            Logger.getLogger(TelaFiltrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaFiltrarPacientes.class.getName()).log(Level.SEVERE, null, ex);
         }
         
        

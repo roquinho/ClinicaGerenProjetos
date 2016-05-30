@@ -5,15 +5,22 @@
  */
 package InterfaceGrafica;
 
+import br.upe.poo.clinica.entidades.Medicos;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioBuscarMedicos;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioDeletarMedicos;
+import br.upe.poo.clinica.regraNegocio.Fachada;
+import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author manoel
  */
 public class TelaExcluirMedicos extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaExcluirMedicos
-     */
+    
+       private Medicos medico;
+     
     public TelaExcluirMedicos() {
         initComponents();
     }
@@ -63,6 +70,11 @@ public class TelaExcluirMedicos extends javax.swing.JFrame {
         getContentPane().add(cpfTExt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 110, -1));
 
         excluirBotao.setText("Excluir");
+        excluirBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirBotaoActionPerformed(evt);
+            }
+        });
         getContentPane().add(excluirBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 70, -1));
 
         sairBotao.setText("sair");
@@ -80,7 +92,25 @@ public class TelaExcluirMedicos extends javax.swing.JFrame {
              dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_sairBotaoActionPerformed
 
+    private void excluirBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirBotaoActionPerformed
+        
+        Long cpf = Long.parseLong(cpfTExt.getText());
+          Fachada fachada = new FachadaImplementa();
+           
+           try {
+               this.medico = fachada.buscarMedicoCpf(cpf);
+           } catch (ExceptionRegraNegocioBuscarMedicos ex) {
+               Logger.getLogger(TelaExcluirMedicos.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           try {
+               fachada.deletarMedico(this.medico);
+           } catch (ExceptionRegraNegocioDeletarMedicos ex) {
+               Logger.getLogger(TelaExcluirMedicos.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+    }//GEN-LAST:event_excluirBotaoActionPerformed
     
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cpfLabel;
     private javax.swing.JTextField cpfTExt;

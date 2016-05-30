@@ -20,6 +20,10 @@ public class RepositorioMedicos implements InterfaceRepositorioMedicos {
         private Connection conexao;
 	private PreparedStatement stm;
         private ResultSet rs;
+          
+          public RepositorioMedicos() {
+              
+          }
         
     @Override
     public void cadastrarMedicos(Medicos medico) {

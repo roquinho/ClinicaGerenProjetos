@@ -6,8 +6,6 @@
 package InterfaceGrafica;
 
 import br.upe.poo.clinica.entidades.Pacientes;
-import br.upe.poo.clinica.persistencia.InterfaceRepositorioPacientes;
-import br.upe.poo.clinica.persistencia.RepositorioPacientes;
 import br.upe.poo.clinica.regraNegocio.Fachada;
 import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
 import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioPacienteBuscarPaciente;

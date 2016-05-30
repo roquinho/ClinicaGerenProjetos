@@ -18,6 +18,10 @@ public class RepositorioPacientes implements InterfaceRepositorioPacientes{
 	private PreparedStatement stm;
         private ResultSet rs;
         
+        
+        public RepositorioPacientes() {
+            
+        }
  
     @Override
     public void cadastrarPaciente(Pacientes paciente) {

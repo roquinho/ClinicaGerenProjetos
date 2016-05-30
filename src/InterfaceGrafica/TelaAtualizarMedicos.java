@@ -5,15 +5,23 @@
  */
 package InterfaceGrafica;
 
+import br.upe.poo.clinica.entidades.Medicos;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioAtualizarMedicos;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioBuscarMedicos;
+import br.upe.poo.clinica.regraNegocio.Fachada;
+import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author manoel
  */
 public class TelaAtualizarMedicos extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaAtualizarMedicos
-     */
+      
+       private Medicos medico;
+       private String especialidade;
+     
     public TelaAtualizarMedicos() {
         initComponents();
     }
@@ -72,9 +80,14 @@ public class TelaAtualizarMedicos extends javax.swing.JFrame {
 
         jLabel2.setText("Digite cpf");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, 30));
-        getContentPane().add(cpfText, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 90, -1));
+        getContentPane().add(cpfText, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 120, -1));
 
         filtrarBotao.setText("Filtrar");
+        filtrarBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtrarBotaoActionPerformed(evt);
+            }
+        });
         getContentPane().add(filtrarBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 90, 20));
 
         jLabel3.setText("Nome");
@@ -93,6 +106,11 @@ public class TelaAtualizarMedicos extends javax.swing.JFrame {
         getContentPane().add(telefoneText, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 90, -1));
 
         salvarText.setText("salvar");
+        salvarText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarTextActionPerformed(evt);
+            }
+        });
         getContentPane().add(salvarText, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
 
         sairBotao.setText("sair");
@@ -107,6 +125,11 @@ public class TelaAtualizarMedicos extends javax.swing.JFrame {
         getContentPane().add(limparBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, -1));
 
         especialidadeText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cardiologista", "pediatra", "otopedista" }));
+        especialidadeText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialidadeTextActionPerformed(evt);
+            }
+        });
         getContentPane().add(especialidadeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
         crmLabel.setText("crm");
@@ -129,6 +152,50 @@ public class TelaAtualizarMedicos extends javax.swing.JFrame {
     private void sairBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairBotaoActionPerformed
                 dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_sairBotaoActionPerformed
+
+    private void salvarTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarTextActionPerformed
+        Long crm = new Long(10);
+        crm = Long.parseLong(crmTexto.getText());
+        Fachada fachada = new FachadaImplementa();
+         this.medico.setNome(nomeText.getText());
+         this.medico.setCrm(crm);
+         this.medico.setEndereco(enderecoText.getText());
+         this.medico.setTelefone(telefoneText.getText());
+         this.medico.setEspecialidade(this.especialidade);
+           try {
+               fachada.atualizarMedico(this.medico);
+           } catch (ExceptionRegraNegocioAtualizarMedicos ex) {
+               Logger.getLogger(TelaAtualizarMedicos.class.getName()).log(Level.SEVERE, null, ex);
+           }
+    }//GEN-LAST:event_salvarTextActionPerformed
+
+    private void filtrarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarBotaoActionPerformed
+       this.medico = new Medicos();
+       Long cpf = new Long(11);
+       cpf = Long.parseLong(cpfText.getText());
+       Fachada fachada = new FachadaImplementa();
+           try {
+               this.medico = fachada.buscarMedicoCpf(cpf);
+           } catch (ExceptionRegraNegocioBuscarMedicos ex) {
+               Logger.getLogger(TelaAtualizarMedicos.class.getName()).log(Level.SEVERE, null, ex);
+           }
+    }//GEN-LAST:event_filtrarBotaoActionPerformed
+
+    private void especialidadeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadeTextActionPerformed
+       this.especialidade = new String();
+        
+         if(especialidadeText.getSelectedIndex()==0) {
+             this.especialidade = "cardiologista";
+         }
+         else if(especialidadeText.getSelectedIndex()==1) {
+             this.especialidade = "pediatra";
+         }
+         else if(especialidadeText.getSelectedIndex()==2) {
+             this.especialidade = "ortopedista";
+         }
+     
+       
+    }//GEN-LAST:event_especialidadeTextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

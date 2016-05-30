@@ -1,19 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+  
 package InterfaceGrafica;
+
+import br.upe.poo.clinica.entidades.Medicos;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioCadastrarMedicos;
+import br.upe.poo.clinica.regraNegocio.Fachada;
+import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author manoel
  */
 public class TelaCadastrarMedicos extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaCadastrarMedicos
-     */
+      
+    private String especialidade;
+    
     public TelaCadastrarMedicos() {
         initComponents();
     }
@@ -76,7 +78,7 @@ public class TelaCadastrarMedicos extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabel4.setText("crm");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
 
         jLabel5.setText("endereco");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
@@ -99,16 +101,26 @@ public class TelaCadastrarMedicos extends javax.swing.JFrame {
                 cpfTextActionPerformed(evt);
             }
         });
-        getContentPane().add(cpfText, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 80, -1));
-        getContentPane().add(crmText, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 80, -1));
+        getContentPane().add(cpfText, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 110, -1));
+        getContentPane().add(crmText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 90, -1));
         getContentPane().add(telefoneText, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 260, -1));
         getContentPane().add(enderecoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 80, -1));
 
         especialidadeText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cardiologista", "pediatra", "ortopedista", " " }));
+        especialidadeText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialidadeTextActionPerformed(evt);
+            }
+        });
         getContentPane().add(especialidadeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
 
         cadastarBotao.setText("Salvar");
-        getContentPane().add(cadastarBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 80, -1));
+        cadastarBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastarBotaoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastarBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 80, -1));
 
         sairBotao.setText("sair");
         sairBotao.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +147,34 @@ public class TelaCadastrarMedicos extends javax.swing.JFrame {
     private void sairBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairBotaoActionPerformed
                      dispose();       
     }//GEN-LAST:event_sairBotaoActionPerformed
+
+    private void cadastarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastarBotaoActionPerformed
+        Long cpf = new Long(11); Long crm = new Long(10);
+        crm = Long.parseLong(crmText.getText());
+        cpf = Long.parseLong(cpfText.getText());
+        
+        Medicos medico = new Medicos(cpf, nomeText.getText(), enderecoText.getText(), telefoneText.getText(),crm, this.especialidade);
+        Fachada fachada = new FachadaImplementa();
+        try {
+            fachada.cadastrarMedicos(medico);
+        } catch (ExceptionRegraNegocioCadastrarMedicos ex) {
+            Logger.getLogger(TelaCadastrarMedicos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cadastarBotaoActionPerformed
+
+    private void especialidadeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadeTextActionPerformed
+        this.especialidade = new String();
+        
+         if(especialidadeText.getSelectedIndex()==0) {
+             this.especialidade = "cardiologista";
+         }
+         else if(especialidadeText.getSelectedIndex()==1) {
+             this.especialidade = "pediatra";
+         }
+         else if(especialidadeText.getSelectedIndex()==2) {
+             this.especialidade = "ortopedista";
+         }
+    }//GEN-LAST:event_especialidadeTextActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

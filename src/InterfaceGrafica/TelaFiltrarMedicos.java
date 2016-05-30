@@ -5,6 +5,16 @@
  */
 package InterfaceGrafica;
 
+import br.upe.poo.clinica.entidades.Medicos;
+import br.upe.poo.clinica.entidades.Pacientes;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioBuscarMedicos;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioPacienteBuscarPaciente;
+import br.upe.poo.clinica.regraNegocio.Fachada;
+import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author manoel
@@ -33,7 +43,7 @@ public class TelaFiltrarMedicos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cpfText = new javax.swing.JTextField();
-        crmText = new javax.swing.JTextField();
+        nomeText = new javax.swing.JTextField();
         especialidadeText = new javax.swing.JComboBox<>();
         cpfBotao = new javax.swing.JButton();
         nomeBotao = new javax.swing.JButton();
@@ -75,19 +85,29 @@ public class TelaFiltrarMedicos extends javax.swing.JFrame {
         jLabel4.setText("filtrar por especialidade");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
         getContentPane().add(cpfText, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 90, -1));
-        getContentPane().add(crmText, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 90, -1));
+        getContentPane().add(nomeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 90, -1));
 
         especialidadeText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(especialidadeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, -1, -1));
+        getContentPane().add(especialidadeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
 
         cpfBotao.setText("filtrar");
-        getContentPane().add(cpfBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
+        cpfBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpfBotaoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cpfBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
 
         nomeBotao.setText("filtrar");
-        getContentPane().add(nomeBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, -1));
+        nomeBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeBotaoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nomeBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
         especialdiadeBotao.setText("filtrar");
-        getContentPane().add(especialdiadeBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
+        getContentPane().add(especialdiadeBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,11 +139,48 @@ public class TelaFiltrarMedicos extends javax.swing.JFrame {
                 dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_sairBotaoActionPerformed
 
+    private void cpfBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfBotaoActionPerformed
+        Long cpf = Long.parseLong(cpfText.getText());
+          Fachada rm = new FachadaImplementa();
+            Medicos medico;
+        try {
+            medico = rm.buscarMedicoCpf(cpf);
+        
+            jTable1.setValueAt(medico.getNome(), 0, 0);
+            jTable1.setValueAt(medico.getCpf(), 0, 1);
+            jTable1.setValueAt(medico.getTelefone(), 0, 2);
+            jTable1.setValueAt(medico.getEspecialidade(), 0, 3);
+            jTable1.setValueAt(medico.getEndereco(), 0, 4);
+            jTable1.setValueAt(medico.getCrm(),0,5);
+            
+            } catch (ExceptionRegraNegocioBuscarMedicos ex) {
+            Logger.getLogger(TelaFiltrarMedicos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cpfBotaoActionPerformed
+
+    private void nomeBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeBotaoActionPerformed
+       Fachada rm = new FachadaImplementa();
+        List<Medicos> medico;
+      try {
+            medico = rm.buscarMedicoNome(nomeText.getText());        
+        for(int i = 0; i <medico.size(); i++ ) {
+            jTable1.setValueAt(medico.get(i).getNome(), i, 0);
+            jTable1.setValueAt(medico.get(i).getCpf(), i, 1);
+            jTable1.setValueAt(medico.get(i).getTelefone(), i, 2);
+            jTable1.setValueAt(medico.get(i).getEspecialidade(), i, 3);
+            jTable1.setValueAt(medico.get(i).getEndereco(), i, 4);
+            jTable1.setValueAt(medico.get(i).getCrm(),i,5);
+        }
+            } catch (ExceptionRegraNegocioBuscarMedicos ex) {
+            Logger.getLogger(TelaFiltrarPacientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+    }//GEN-LAST:event_nomeBotaoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cpfBotao;
     private javax.swing.JTextField cpfText;
-    private javax.swing.JTextField crmText;
     private javax.swing.JButton especialdiadeBotao;
     private javax.swing.JComboBox<String> especialidadeText;
     private javax.swing.JLabel jLabel1;
@@ -134,6 +191,7 @@ public class TelaFiltrarMedicos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton nomeBotao;
+    private javax.swing.JTextField nomeText;
     private javax.swing.JButton sairBotao;
     // End of variables declaration//GEN-END:variables
 }

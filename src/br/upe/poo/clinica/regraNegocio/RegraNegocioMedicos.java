@@ -3,6 +3,7 @@ package br.upe.poo.clinica.regraNegocio;
 
 import br.upe.poo.clinica.entidades.Medicos;
 import br.upe.poo.clinica.persistencia.InterfaceRepositorioMedicos;
+import br.upe.poo.clinica.persistencia.RepositorioMedicos;
 import java.util.List;
 
 /**
@@ -11,6 +12,10 @@ import java.util.List;
  */
 public class RegraNegocioMedicos implements InterfaceRegraNegocioMedicos {
      private InterfaceRepositorioMedicos rm;
+     
+       public RegraNegocioMedicos() {
+           this.rm = new RepositorioMedicos();
+       }
     
     @Override
     public void cadastrarMedicos(Medicos medico) throws ExceptionRegraNegocioCadastrarMedicos {

@@ -1,6 +1,7 @@
 package br.upe.poo.clinica.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ public class Pacientes implements Serializable {
 	private List<Exames>exames;
 	
 	 public Pacientes() {
-		 
+		 this.consultas = new ArrayList<>();
 	 }
 	 public Pacientes(Long cpf,String nome,String endereco,String telefone,String sexo,String dataNascimento) {             
 		 this.endereco = endereco;

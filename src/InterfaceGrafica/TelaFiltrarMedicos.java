@@ -6,9 +6,7 @@
 package InterfaceGrafica;
 
 import br.upe.poo.clinica.entidades.Medicos;
-import br.upe.poo.clinica.entidades.Pacientes;
 import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioBuscarMedicos;
-import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioPacienteBuscarPaciente;
 import br.upe.poo.clinica.regraNegocio.Fachada;
 import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
 import java.util.List;

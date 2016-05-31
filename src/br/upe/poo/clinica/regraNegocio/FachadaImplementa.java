@@ -1,6 +1,7 @@
 
 package br.upe.poo.clinica.regraNegocio;
 
+import br.upe.poo.clinica.entidades.Consultas;
 import br.upe.poo.clinica.entidades.Medicos;
 import br.upe.poo.clinica.entidades.Pacientes;
 import java.util.List;
@@ -8,10 +9,12 @@ import java.util.List;
 public class FachadaImplementa implements Fachada {
     private InterfaceRegraNegocioPacientes pacientes;
     private InterfaceRegraNegocioMedicos medicos;
+    private InterfaceRegaNegocioConsultas consultas;
     
       public FachadaImplementa(){
-          pacientes = new RegraNegocioPaciente();
-          medicos = new RegraNegocioMedicos();
+          this.pacientes = new RegraNegocioPaciente();
+          this.medicos = new RegraNegocioMedicos();
+          this.consultas = new RegraNegocioConsultas();
       }
 
     @Override
@@ -68,6 +71,33 @@ public class FachadaImplementa implements Fachada {
 
     
     
+    @Override
+    public void agendarConsulta(Consultas consulta) throws ExceptionRegraNegocioAgendarConsultas {
+        consultas.agendarConsulta(consulta);
+    }
+
+    @Override
+    public List<Consultas> filtrarConsultaNomePaciente(String nomePaciente) throws ExceptionRegraNegocioFiltrarConsultas {
+        return this.consultas.filtrarConsultaNomePaciente(nomePaciente);
+    }
+
+    @Override
+    public Consultas filtrarConsultaCpfPaciente(Long cpf) throws ExceptionRegraNegocioFiltrarConsultas {
+        return this.consultas.filtrarConsultaCpfPaciente(cpf);
+    }
+
+    @Override
+    public void atualizarConsulta(Consultas consulta) throws ExceptionRegraNegocioAtualizarConsultas {
+       this.consultas.atualizarConsulta(consulta);
+    }
+
+    @Override
+    public void deletarConsulta(Consultas consulta) throws ExceptionRegraNegocioDeletarConsultas {
+        this.consultas.deletarConsulta(consulta);
+    }
+    
+    
+    
     public InterfaceRegraNegocioPacientes getPacientes() {
         return pacientes;
     }
@@ -83,6 +113,7 @@ public class FachadaImplementa implements Fachada {
     public void setMedicos(InterfaceRegraNegocioMedicos medicos) {
         this.medicos = medicos;
     }
+
       
     
 }

@@ -2,14 +2,12 @@ package br.upe.poo.clinica.entidades;
 
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
 public class Consultas implements Serializable {
     
-        private Long numeroConsulta;
-	private Date diaConsulta;
-	private Date horaConsulta;
+	private String diaConsulta;
+	private String horaConsulta;
 	private Pacientes paciente;
 	private boolean situacaoConsulta;
 	private DadosConsultas dadosConsulta;
@@ -17,27 +15,25 @@ public class Consultas implements Serializable {
         private List<Exames> exames;
 	
             public Consultas() {
-                
+                this.paciente = new Pacientes();
+                this.medico = new Medicos();
             }
-	    public Consultas(Long numeroConsulta,Pacientes paciente,Date diaConsulta,Date horaConsulta,Medicos medico) {
+	    public Consultas(Pacientes paciente,String diaConsulta,String horaConsulta,Medicos medico) {
                 this.diaConsulta = diaConsulta;
 	    	this.horaConsulta = horaConsulta;
 	    	this.paciente = paciente;
                 this.medico = medico;
-                this.numeroConsulta = numeroConsulta;
 	    }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 17 * hash + Objects.hashCode(this.numeroConsulta);
-        hash = 17 * hash + Objects.hashCode(this.diaConsulta);
-        hash = 17 * hash + Objects.hashCode(this.horaConsulta);
-        hash = 17 * hash + Objects.hashCode(this.paciente);
-        hash = 17 * hash + (this.situacaoConsulta ? 1 : 0);
-        hash = 17 * hash + Objects.hashCode(this.dadosConsulta);
-        hash = 17 * hash + Objects.hashCode(this.medico);
-        hash = 17 * hash + Objects.hashCode(this.exames);
+        hash = 97 * hash + Objects.hashCode(this.diaConsulta);
+        hash = 97 * hash + Objects.hashCode(this.horaConsulta);
+        hash = 97 * hash + Objects.hashCode(this.paciente);
+        hash = 97 * hash + Objects.hashCode(this.dadosConsulta);
+        hash = 97 * hash + Objects.hashCode(this.medico);
+        hash = 97 * hash + Objects.hashCode(this.exames);
         return hash;
     }
 
@@ -54,9 +50,6 @@ public class Consultas implements Serializable {
         }
         final Consultas other = (Consultas) obj;
         if (this.situacaoConsulta != other.situacaoConsulta) {
-            return false;
-        }
-        if (!Objects.equals(this.numeroConsulta, other.numeroConsulta)) {
             return false;
         }
         if (!Objects.equals(this.diaConsulta, other.diaConsulta)) {
@@ -82,27 +75,20 @@ public class Consultas implements Serializable {
 
     @Override
     public String toString() {
-        return "Consultas{" + "NumeroConsulta=" + numeroConsulta + ", diaConsulta=" + diaConsulta + ", horaConsulta=" + horaConsulta + ", paciente=" + paciente + ", situacaoConsulta=" + situacaoConsulta + ", dadosConsulta=" + dadosConsulta + ", medico=" + medico + ", exames=" + exames + '}';
+        return "Consultas{" + "diaConsulta=" + diaConsulta + ", horaConsulta=" + horaConsulta + ", paciente=" + paciente + ", situacaoConsulta=" + situacaoConsulta + ", dadosConsulta=" + dadosConsulta + ", medico=" + medico + ", exames=" + exames + '}';
     }
-    
-                public Long getNumeroConsulta() {
-                    return numeroConsulta;
-                 }
-
-                public void setNumeroConsulta(Long numeroConsulta) {
-                    this.numeroConsulta = numeroConsulta;
-                 }
-		public Date getDiaConsulta() {
+  
+		public String getDiaConsulta() {
 			return diaConsulta;
 		}
-		public void setDiaConsulta(Date diaConsulta) {
+		public void setDiaConsulta(String diaConsulta) {
 			this.diaConsulta = diaConsulta;
 		}
                 
-		public Date getHoraConsulta() {
+		public String getHoraConsulta() {
 			return horaConsulta;
 		}
-		public void setHoraConsulta(Date horaConsulta) {
+		public void setHoraConsulta(String horaConsulta) {
 			this.horaConsulta = horaConsulta;
 		}
 

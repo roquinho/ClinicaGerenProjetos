@@ -12,4 +12,8 @@ public interface InterfaceRepositorioUsuarios {
     public void cadastrarUsuario(Usuarios usuario);
     
     public Usuarios buscarUsuarioSenhaNome(String senha,String nome);
+    
+    public void atualizarUsuario(Usuarios usuario);
+    
+    public void deletarUsuario(Usuarios usuario);
 }

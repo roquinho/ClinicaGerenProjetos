@@ -13,6 +13,8 @@ public class TelaPrincipalClinica extends javax.swing.JFrame {
 
       private TelaPrincipalPacientes telaPacientes;
       private TelaPrincipalMedicos telaMedicos;
+      private TelaPrincipalConsultas telaConsultas;
+      
     
     public TelaPrincipalClinica() {
         initComponents();
@@ -32,6 +34,7 @@ public class TelaPrincipalClinica extends javax.swing.JFrame {
         PacientesBotao = new javax.swing.JButton();
         MedicosBotao = new javax.swing.JButton();
         sairBotao = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,6 +85,14 @@ public class TelaPrincipalClinica extends javax.swing.JFrame {
         });
         getContentPane().add(sairBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 100, -1));
 
+        jButton1.setText("Consultas");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -99,6 +110,11 @@ public class TelaPrincipalClinica extends javax.swing.JFrame {
        dispose();
     }//GEN-LAST:event_sairBotaoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.telaConsultas = new TelaPrincipalConsultas();
+        this.telaConsultas.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -107,6 +123,7 @@ public class TelaPrincipalClinica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MedicosBotao;
     private javax.swing.JButton PacientesBotao;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton sairBotao;

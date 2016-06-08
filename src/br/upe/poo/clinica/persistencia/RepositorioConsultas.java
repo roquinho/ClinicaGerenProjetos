@@ -90,7 +90,7 @@ public class RepositorioConsultas implements InterfaceRepositorioConsultas {
 
     @Override
     public Consultas filtrarConsultaCpfPaciente(Long cpf) {
-                this.conexao = new ConexaoBancoDeDados().conectar("root", "12345","localhost", "clinica");
+    this.conexao = new ConexaoBancoDeDados().conectar("root", "12345","localhost", "clinica");
       Consultas consulta = new Consultas();
         try{	    	 
 	  String sql = "select * from consultas";	    	
@@ -170,6 +170,42 @@ public class RepositorioConsultas implements InterfaceRepositorioConsultas {
            }
 
          }
+    }
+
+    @Override
+    public List<Consultas> filtrarNomeMedico(String nomeMedico) {
+        this.conexao = new ConexaoBancoDeDados().conectar("root", "12345","localhost", "clinica");
+       List<Consultas>consultas = new ArrayList();
+         try{	    	 
+	  String sql = "select * from consultas where nome_medico like ?";
+          
+        this.stm = conexao.prepareStatement(sql);
+        this.stm.setString(1,'%'+ nomeMedico+'%');
+        this.rs = stm.executeQuery();
+                   
+       		    while(this.rs.next()){
+                        
+                            Consultas consulta = new Consultas();
+	 		        consulta.getPaciente().setNome(this.rs.getString("nome_paciente"));
+	         		consulta.getPaciente().setCpf(this.rs.getLong("cpf_paciente"));
+	 			consulta.setHoraConsulta(this.rs.getString("hora_consulta"));
+	 			consulta.setDiaConsulta(this.rs.getString("dia_consulta"));
+	 			consulta.getMedico().setNome(this.rs.getString("nome_medico"));
+	 				consultas.add(consulta);              
+	 				}	 					 				
+	 			
+	 			this.stm.close();
+	 			this.rs.close();
+                                this.conexao.close();
+        }catch(SQLException e) {
+          try {
+              throw  new Exception(e.getMessage());
+          } catch (Exception ex) {
+              Logger.getLogger(RepositorioConsultas.class.getName()).log(Level.SEVERE, null, ex);
+          }
+        }         
+        return consultas;
+
     }
     
 }

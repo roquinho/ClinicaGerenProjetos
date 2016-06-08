@@ -19,4 +19,6 @@ public interface InterfaceRepositorioConsultas {
     public void atualizarConsulta(Consultas consulta);
     
     public void deletarConsulta(Consultas consulta);
+    
+    public List<Consultas> filtrarNomeMedico(String nomeMedico);
 }

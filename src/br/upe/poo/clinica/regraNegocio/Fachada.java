@@ -2,8 +2,10 @@
 package br.upe.poo.clinica.regraNegocio;
 
 import br.upe.poo.clinica.entidades.Consultas;
+import br.upe.poo.clinica.entidades.Exames;
 import br.upe.poo.clinica.entidades.Medicos;
 import br.upe.poo.clinica.entidades.Pacientes;
+import br.upe.poo.clinica.entidades.Usuarios;
 import java.util.List;
 
 public interface Fachada {
@@ -41,6 +43,29 @@ public interface Fachada {
     public void atualizarConsulta(Consultas consulta)throws ExceptionRegraNegocioAtualizarConsultas;
     
     public void deletarConsulta(Consultas consulta)throws ExceptionRegraNegocioDeletarConsultas;
+    
+    public List<Consultas> filtrarNomeMedico(String nomeMedico)throws ExceptionRegraNegocioFiltrarConsultas;
+    
+    
+    public void agendarExame(Exames exame)throws ExceptionRegraNegocioAgendarExame;
+    
+    public Exames filtrarExameCpfPaciente(Long cpf)throws ExceptionRegraNegocioFiltrarExame;
+    
+    public List<Exames> filtrarExameNomePaciente(String nome)throws ExceptionRegraNegocioFiltrarExame;
+    
+    public void atualizarExame(Exames exame)throws ExceptionRegraNegocioAtualizarExames;
+    
+    public void deletarExame(Exames exame)throws ExceptionRegraNegocioDeletarExames;
+    
+    
+    public void cadastrarUsuario(Usuarios usuario)throws ExceptionRegraNegocioCadastrarUsuarios;
+    
+    public Usuarios buscarUsuarioSenhaNome(String senha,String nome)throws ExceptionRegraNegociofiltrarUsuarios;
+    
+    public void atualizarUsuario(Usuarios usuario)throws ExceptionRegraNegocioAtualizarUsuarios;
+    
+    public void deletarUsuario(Usuarios usuario)throws ExceptionRegraNegocioDeletarUsuarios;
+
 
    
 }

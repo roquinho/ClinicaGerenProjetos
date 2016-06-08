@@ -2,19 +2,25 @@
 package br.upe.poo.clinica.regraNegocio;
 
 import br.upe.poo.clinica.entidades.Consultas;
+import br.upe.poo.clinica.entidades.Exames;
 import br.upe.poo.clinica.entidades.Medicos;
 import br.upe.poo.clinica.entidades.Pacientes;
+import br.upe.poo.clinica.entidades.Usuarios;
 import java.util.List;
 
 public class FachadaImplementa implements Fachada {
     private InterfaceRegraNegocioPacientes pacientes;
     private InterfaceRegraNegocioMedicos medicos;
     private InterfaceRegaNegocioConsultas consultas;
+    private InterfaceRegraNegocioExames exames;
+    private InterfaceRegraNegocioUsuarios usuarios;
     
       public FachadaImplementa(){
           this.pacientes = new RegraNegocioPaciente();
           this.medicos = new RegraNegocioMedicos();
           this.consultas = new RegraNegocioConsultas();
+          this.exames = new RegraNegocioExames();
+          this.usuarios = new RegraNegocioUsuarios();
       }
 
     @Override
@@ -96,24 +102,60 @@ public class FachadaImplementa implements Fachada {
         this.consultas.deletarConsulta(consulta);
     }
     
+    @Override
+    public List<Consultas> filtrarNomeMedico(String nomeMedico) throws ExceptionRegraNegocioFiltrarConsultas {
+        return this.consultas.filtrarNomeMedico(nomeMedico);
+    }
     
+    @Override
+    public void agendarExame(Exames exame) throws ExceptionRegraNegocioAgendarExame {
+        this.exames.agendarExame(exame);
+    }
+
+    @Override
+    public Exames filtrarExameCpfPaciente(Long cpf) throws ExceptionRegraNegocioFiltrarExame {
+        return this.exames.filtrarExameCpfPaciente(cpf);
+    }
+
+    @Override
+    public List<Exames> filtrarExameNomePaciente(String nome) throws ExceptionRegraNegocioFiltrarExame {
+        return this.exames.filtrarExameNomePaciente(nome);
+    }
+
+    @Override
+    public void atualizarExame(Exames exame) throws ExceptionRegraNegocioAtualizarExames {
+        this.exames.atualizarExame(exame);
+    }
+
+    @Override
+    public void deletarExame(Exames exame) throws ExceptionRegraNegocioDeletarExames {
+        this.exames.deletarExame(exame);
+    }
+
     
-    public InterfaceRegraNegocioPacientes getPacientes() {
-        return pacientes;
+
+    @Override
+    public void cadastrarUsuario(Usuarios usuario) throws ExceptionRegraNegocioCadastrarUsuarios {
+        this.usuarios.cadastrarUsuario(usuario);
     }
 
-    public void setPacientes(InterfaceRegraNegocioPacientes pacientes) {
-        this.pacientes = pacientes;
+    @Override
+    public Usuarios buscarUsuarioSenhaNome(String senha, String nome) throws ExceptionRegraNegociofiltrarUsuarios {
+        return this.usuarios.buscarUsuarioSenhaNome(senha, nome);
     }
 
-    public InterfaceRegraNegocioMedicos getMedicos() {
-        return medicos;
+    @Override
+    public void atualizarUsuario(Usuarios usuario) throws ExceptionRegraNegocioAtualizarUsuarios {
+        this.usuarios.atualizarUsuario(usuario);
     }
 
-    public void setMedicos(InterfaceRegraNegocioMedicos medicos) {
-        this.medicos = medicos;
+    @Override
+    public void deletarUsuario(Usuarios usuario) throws ExceptionRegraNegocioDeletarUsuarios {
+        this.usuarios.deletarUsuario(usuario);
     }
 
+
+    
       
     
 }

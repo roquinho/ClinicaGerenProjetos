@@ -105,7 +105,7 @@ public class TelaFiltrarMedicos extends javax.swing.JFrame {
         getContentPane().add(nomeBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
         especialdiadeBotao.setText("filtrar");
-        getContentPane().add(especialdiadeBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+        getContentPane().add(especialdiadeBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

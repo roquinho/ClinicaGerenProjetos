@@ -8,8 +8,6 @@ package InterfaceGrafica;
 import br.upe.poo.clinica.entidades.Usuarios;
 import br.upe.poo.clinica.persistencia.InterfaceRepositorioUsuarios;
 import br.upe.poo.clinica.persistencia.RepositorioUsuarios;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**

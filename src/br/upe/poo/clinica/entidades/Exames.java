@@ -1,41 +1,37 @@
 package br.upe.poo.clinica.entidades;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.Objects;
 
 public class Exames implements Serializable {
     
-        private Long idExame;
-	private Date dataExame;
-	private Date horaExame;
+	private String dataExame;
+	private String horaExame;
 	private String tipoExame;
 	private Pacientes paciente;
 	private ResultadosExames resultadoExame;
 	private Consultas consulta; 
         
 	 public Exames() {
-		 
+          this.paciente = new Pacientes();
 	 }
          
-	 public Exames(Long idExame,String tipoExame,Date dataExame,Date horaExame,Pacientes paciente) {
+	 public Exames(String tipoExame,String dataExame,String horaExame,Pacientes paciente) {
                  this.tipoExame = tipoExame;
                  this.dataExame = dataExame;
                  this.horaExame = horaExame;
                  this.paciente = paciente;
-                 this.idExame = idExame;
 	 }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.idExame);
-        hash = 97 * hash + Objects.hashCode(this.dataExame);
-        hash = 97 * hash + Objects.hashCode(this.horaExame);
-        hash = 97 * hash + Objects.hashCode(this.tipoExame);
-        hash = 97 * hash + Objects.hashCode(this.paciente);
-        hash = 97 * hash + Objects.hashCode(this.resultadoExame);
-        hash = 97 * hash + Objects.hashCode(this.consulta);
+        hash = 89 * hash + Objects.hashCode(this.dataExame);
+        hash = 89 * hash + Objects.hashCode(this.horaExame);
+        hash = 89 * hash + Objects.hashCode(this.tipoExame);
+        hash = 89 * hash + Objects.hashCode(this.paciente);
+        hash = 89 * hash + Objects.hashCode(this.resultadoExame);
+        hash = 89 * hash + Objects.hashCode(this.consulta);
         return hash;
     }
 
@@ -51,16 +47,13 @@ public class Exames implements Serializable {
             return false;
         }
         final Exames other = (Exames) obj;
-        if (!Objects.equals(this.tipoExame, other.tipoExame)) {
-            return false;
-        }
-        if (!Objects.equals(this.idExame, other.idExame)) {
-            return false;
-        }
         if (!Objects.equals(this.dataExame, other.dataExame)) {
             return false;
         }
         if (!Objects.equals(this.horaExame, other.horaExame)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipoExame, other.tipoExame)) {
             return false;
         }
         if (!Objects.equals(this.paciente, other.paciente)) {
@@ -77,30 +70,22 @@ public class Exames implements Serializable {
 
     @Override
     public String toString() {
-        return "Exames{" + "idExame=" + idExame + ", dataExame=" + dataExame + ", horaExame=" + horaExame + ", tipoExame=" + tipoExame + ", paciente=" + paciente + ", resultadoExame=" + resultadoExame + ", consulta=" + consulta + '}';
+        return "Exames{" + "dataExame=" + dataExame + ", horaExame=" + horaExame + ", tipoExame=" + tipoExame + ", paciente=" + paciente + ", resultadoExame=" + resultadoExame + ", consulta=" + consulta + '}';
     }
 
-    public Long getIdExame() {
-        return idExame;
-    }
-
-    public void setIdExame(Long idExame) {
-        this.idExame = idExame;
-    }
-
-    public Date getDataExame() {
+    public String getDataExame() {
         return dataExame;
     }
 
-    public void setDataExame(Date dataExame) {
+    public void setDataExame(String dataExame) {
         this.dataExame = dataExame;
     }
 
-    public Date getHoraExame() {
+    public String getHoraExame() {
         return horaExame;
     }
 
-    public void setHoraExame(Date horaExame) {
+    public void setHoraExame(String horaExame) {
         this.horaExame = horaExame;
     }
 
@@ -136,6 +121,7 @@ public class Exames implements Serializable {
         this.consulta = consulta;
     }
 
+    
     	
 
 }

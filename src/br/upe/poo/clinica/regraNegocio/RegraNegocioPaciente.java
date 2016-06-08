@@ -15,7 +15,7 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
      public RegraNegocioPaciente() {
          rp = new RepositorioPacientes();
      }
-     //falta tratar o tamanho do cpf
+     
      
     @Override
     public void cadastrarPaciente(Pacientes paciente)throws ExceptionRegraNegocioPacientesCadastrar {
@@ -28,13 +28,9 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
         if(paciente.getCpf()==null) {
             throw new ExceptionRegraNegocioPacientesCadastrar();
         }
-        /*if(paciente.getCpf()>11) {
+        if(paciente.equals(rp.buscarPacienteCpf(paciente.getCpf()))) {
             throw new ExceptionRegraNegocioPacientesCadastrar();
-        }
-        if(paciente.getCpf()<11) {
-            throw new ExceptionRegraNegocioPacientesCadastrar();
-        }*/
-
+        } 
         else {
             rp.cadastrarPaciente(paciente);
         }
@@ -47,12 +43,6 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
        if(cpf == null){
            throw new ExceptionRegraNegocioPacienteBuscarPaciente();
        }
-       /*if(cpf>11) {
-           throw new ExceptionRegraNegocioPacienteBuscarPaciente();
-       }
-       if(cpf<11) {
-           throw new ExceptionRegraNegocioPacienteBuscarPaciente();
-       }*/
        else {
           paciente = rp.buscarPacienteCpf(cpf);
        }       
@@ -82,13 +72,9 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
         if(paciente.getCpf()==null) {
             throw new ExceptionRegraNegocioAtualizarPacientes();
         }
-       /* if(paciente.getCpf()>11) {
+        if(paciente.equals(rp.buscarPacienteCpf(paciente.getCpf()))==false) {
             throw new ExceptionRegraNegocioAtualizarPacientes();
         }
-        if(paciente.getCpf()<11) {
-            throw new ExceptionRegraNegocioAtualizarPacientes();
-        }*/
-        
         else {
             rp.atualizarPaciente(paciente);
         }
@@ -100,6 +86,9 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
        if(paciente == null) {
            throw new ExceptionRegraNegocioDeletarPacientes();
        }
+       if(paciente.equals(rp.buscarPacienteCpf(paciente.getCpf()))==false) {
+           throw new ExceptionRegraNegocioDeletarPacientes();
+        }
        else {
            rp.deletarPaciente(paciente);
        }

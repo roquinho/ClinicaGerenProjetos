@@ -8,6 +8,11 @@ package InterfaceGrafica;
 import br.upe.poo.clinica.entidades.Usuarios;
 import br.upe.poo.clinica.persistencia.InterfaceRepositorioUsuarios;
 import br.upe.poo.clinica.persistencia.RepositorioUsuarios;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioCadastrarUsuarios;
+import br.upe.poo.clinica.regraNegocio.Fachada;
+import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -95,9 +100,13 @@ public class TelaUsuarios extends javax.swing.JFrame {
         String tipoUsuario = new String();
         tipoUsuario = String.valueOf(tipoText.getSelectedItem());
                 
-        InterfaceRepositorioUsuarios ru = new RepositorioUsuarios();
+        Fachada fachada = new FachadaImplementa();
         Usuarios usuario = new Usuarios(nomeText.getText(), senhaText.getText(), tipoUsuario, cpfText.getText());
-         ru.cadastrarUsuario(usuario);
+        try {
+            fachada.cadastrarUsuario(usuario);
+        } catch (ExceptionRegraNegocioCadastrarUsuarios ex) {
+            Logger.getLogger(TelaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_salvarBotaoActionPerformed
 
     private void sairBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairBotaoActionPerformed

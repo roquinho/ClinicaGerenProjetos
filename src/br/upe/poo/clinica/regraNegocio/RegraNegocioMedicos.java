@@ -31,7 +31,9 @@ public class RegraNegocioMedicos implements InterfaceRegraNegocioMedicos {
         if(medico.getCrm()==null) {
             throw new ExceptionRegraNegocioCadastrarMedicos();
         }
-        //tratar o tamanho do cpf e do crm
+        if(medico.equals(rm.buscarMedicoCpf(medico.getCpf()))) {
+            throw new ExceptionRegraNegocioCadastrarMedicos();
+        }
         else {
            rm.cadastrarMedicos(medico);
         }
@@ -43,12 +45,6 @@ public class RegraNegocioMedicos implements InterfaceRegraNegocioMedicos {
         if(cpf == null){
            throw new ExceptionRegraNegocioBuscarMedicos();
        }
-       /*if(cpf>11) {
-           throw new ExceptionRegraNegocioBuscarMedicos();
-       }
-       if(cpf<11) {
-           throw new ExceptionRegraNegocioBuscarMedicos();
-       }*/
        else {
           medico = rm.buscarMedicoCpf(cpf);
        }       
@@ -81,13 +77,9 @@ public class RegraNegocioMedicos implements InterfaceRegraNegocioMedicos {
         if(medico.getCrm()==null) {
             throw new ExceptionRegraNegocioAtualizarMedicos();
         }
-        /*if(medico.getCpf()>11) {
+        if(medico.equals(rm.buscarMedicoCpf(medico.getCpf()))==false) {
             throw new ExceptionRegraNegocioAtualizarMedicos();
-        }
-        if(medico.getCpf()<11) {
-            throw new ExceptionRegraNegocioAtualizarMedicos();
-        }*/
-        
+        }   
         else {
             rm.atualizarMedico(medico);
         }
@@ -99,6 +91,9 @@ public class RegraNegocioMedicos implements InterfaceRegraNegocioMedicos {
         if(medico == null) {
            throw new ExceptionRegraNegocioDeletarMedicos();
        }
+        if(medico.equals(rm.buscarMedicoCpf(medico.getCpf()))==false) {
+            throw new ExceptionRegraNegocioDeletarMedicos();
+        }
        else {
            rm.deletarMedico(medico);
        }

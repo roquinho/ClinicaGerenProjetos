@@ -17,6 +17,7 @@ private TelaFiltrarPacientes tfiltrar;
 private TelaExcluirPacientes tExcluir;
 private TelaAtualizarPacientes tAtualizar;
 private TelaAgendarConsultas tAgendarConsulta;
+private TelaAgendarExame tAgendarExame;
 
     public TelaPrincipalPacientes() {
         initComponents();
@@ -39,6 +40,7 @@ private TelaAgendarConsultas tAgendarConsulta;
         Bsair = new javax.swing.JButton();
         AtualiarBotao = new javax.swing.JButton();
         agendarConsultaBotao = new javax.swing.JButton();
+        agendarExameBotao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +88,13 @@ private TelaAgendarConsultas tAgendarConsulta;
             }
         });
 
+        agendarExameBotao.setText("Agendar Exame");
+        agendarExameBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendarExameBotaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -108,7 +117,9 @@ private TelaAgendarConsultas tAgendarConsulta;
                     .addComponent(bExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(AtualiarBotao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(agendarConsultaBotao)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(agendarConsultaBotao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendarExameBotao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(86, 86, 86))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,7 +132,9 @@ private TelaAgendarConsultas tAgendarConsulta;
                     .addComponent(bCadastrar)
                     .addComponent(agendarConsultaBotao))
                 .addGap(18, 18, 18)
-                .addComponent(bBuscar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bBuscar)
+                    .addComponent(agendarExameBotao))
                 .addGap(29, 29, 29)
                 .addComponent(bExcluir)
                 .addGap(18, 18, 18)
@@ -174,12 +187,18 @@ dispose();        // TODO add your handling code here:
         this.tAgendarConsulta.setVisible(true);
     }//GEN-LAST:event_agendarConsultaBotaoActionPerformed
 
+    private void agendarExameBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendarExameBotaoActionPerformed
+        this.tAgendarExame = new TelaAgendarExame();
+        this.tAgendarExame.setVisible(true);
+    }//GEN-LAST:event_agendarExameBotaoActionPerformed
+
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AtualiarBotao;
     private javax.swing.JButton Bsair;
     private javax.swing.JButton agendarConsultaBotao;
+    private javax.swing.JButton agendarExameBotao;
     private javax.swing.JButton bBuscar;
     private javax.swing.JButton bCadastrar;
     private javax.swing.JButton bExcluir;

@@ -21,20 +21,22 @@ public class RegraNegocioConsultas implements InterfaceRegaNegocioConsultas {
          
     @Override
     public void agendarConsulta(Consultas consulta) throws ExceptionRegraNegocioAgendarConsultas {
-        if(consulta == null) {System.out.println("entro aqui 1");
-            throw new ExceptionRegraNegocioAgendarConsultas();
-              
+        if(consulta == null) {
+            throw new ExceptionRegraNegocioAgendarConsultas();              
         }
-        if(consulta.getPaciente().getNome() == null) {System.out.println("entro aqui 2");
-            throw new ExceptionRegraNegocioAgendarConsultas();
-        }
-        if(consulta.getPaciente().getCpf() == null) {System.out.println("entro aqui 3");
+        if(consulta.getPaciente().getNome() == null) {
             throw new ExceptionRegraNegocioAgendarConsultas();
         }
-        if(consulta.getHoraConsulta()== null) {System.out.println("entro aqui 4");
+        if(consulta.getPaciente().getCpf() == null) {
             throw new ExceptionRegraNegocioAgendarConsultas();
         }
-        if(consulta.getDiaConsulta()== null) {System.out.println("entro aqui 5");
+        if(consulta.getHoraConsulta()== null) {
+            throw new ExceptionRegraNegocioAgendarConsultas();
+        }
+        if(consulta.getDiaConsulta()== null) {
+            throw new ExceptionRegraNegocioAgendarConsultas();
+        }
+        if(consulta.equals(rc.filtrarConsultaCpfPaciente(consulta.getPaciente().getCpf()))) {
             throw new ExceptionRegraNegocioAgendarConsultas();
         }
         else {
@@ -87,6 +89,9 @@ public class RegraNegocioConsultas implements InterfaceRegaNegocioConsultas {
         if(consulta.getDiaConsulta()== null) {
             throw new ExceptionRegraNegocioAtualizarConsultas();
         }
+        if(consulta.equals(rc.filtrarConsultaCpfPaciente(consulta.getPaciente().getCpf()))==false) {
+            throw new ExceptionRegraNegocioAtualizarConsultas();
+        }
         else {
             rc.atualizarConsulta(consulta);
         }
@@ -97,9 +102,26 @@ public class RegraNegocioConsultas implements InterfaceRegaNegocioConsultas {
         if(consulta == null) {
             throw new ExceptionRegraNegocioDeletarConsultas();
         }
+        if(consulta.equals(rc.filtrarConsultaCpfPaciente(consulta.getPaciente().getCpf()))==false) {
+            throw new ExceptionRegraNegocioDeletarConsultas();
+        }
         else {
             rc.deletarConsulta(consulta);
         }
+    }
+
+    @Override
+    public List<Consultas> filtrarNomeMedico(String nomeMedico) throws ExceptionRegraNegocioFiltrarConsultas {
+       List<Consultas>consultas = new ArrayList<>();
+        
+        if(nomeMedico == null) {
+         throw new ExceptionRegraNegocioFiltrarConsultas();
+    }
+       else {
+           consultas = rc.filtrarNomeMedico(nomeMedico);
+    }
+        return consultas;
+ 
     }
     
 }

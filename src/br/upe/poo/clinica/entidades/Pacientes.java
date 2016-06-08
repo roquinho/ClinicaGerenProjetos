@@ -17,6 +17,7 @@ public class Pacientes implements Serializable {
 	
 	 public Pacientes() {
 		 this.consultas = new ArrayList<>();
+                 this.exames = new ArrayList<>();
 	 }
 	 public Pacientes(Long cpf,String nome,String endereco,String telefone,String sexo,String dataNascimento) {             
 		 this.endereco = endereco;

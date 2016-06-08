@@ -153,7 +153,7 @@ public class TelaCadastrarMedicos extends javax.swing.JFrame {
         crm = Long.parseLong(crmText.getText());
         cpf = Long.parseLong(cpfText.getText());
         
-        Medicos medico = new Medicos(cpf, nomeText.getText(), enderecoText.getText(), telefoneText.getText(),crm, this.especialidade);
+        Medicos medico = new Medicos(cpf, nomeText.getText(),telefoneText.getText() , enderecoText.getText(),crm, this.especialidade);
         Fachada fachada = new FachadaImplementa();
         try {
             fachada.cadastrarMedicos(medico);

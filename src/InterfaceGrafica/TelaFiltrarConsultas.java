@@ -153,7 +153,8 @@ public class TelaFiltrarConsultas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Long cpf =  Long.parseLong(cpfPacienteText.getText());        
+        Long cpf = new Long(11);
+        cpf = Long.parseLong(cpfPacienteText.getText());        
         try {
             Fachada fachada = new FachadaImplementa();
             Consultas consulta = fachada.filtrarConsultaCpfPaciente(cpf);

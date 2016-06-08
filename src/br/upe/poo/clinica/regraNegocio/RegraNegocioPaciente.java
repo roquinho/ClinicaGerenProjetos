@@ -72,7 +72,7 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
         if(paciente.getCpf()==null) {
             throw new ExceptionRegraNegocioAtualizarPacientes();
         }
-        if(paciente.equals(rp.buscarPacienteCpf(paciente.getCpf()))==false) {
+        if(paciente.equals(rp.buscarPacienteCpf(paciente.getCpf()))==true) {
             throw new ExceptionRegraNegocioAtualizarPacientes();
         }
         else {

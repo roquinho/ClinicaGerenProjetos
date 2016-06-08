@@ -94,6 +94,11 @@ public class TelaPrincipalConsultas extends javax.swing.JFrame {
         getContentPane().add(deletarBota, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 120, -1));
 
         SairBotao.setText("Sair");
+        SairBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SairBotaoActionPerformed(evt);
+            }
+        });
         getContentPane().add(SairBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 80, -1));
 
         pack();
@@ -118,6 +123,10 @@ public class TelaPrincipalConsultas extends javax.swing.JFrame {
         this.telaDeletarConsulta = new TelaDeletarConsulta();
         this.telaDeletarConsulta.setVisible(true);
     }//GEN-LAST:event_deletarBotaActionPerformed
+
+    private void SairBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairBotaoActionPerformed
+         dispose();      
+    }//GEN-LAST:event_SairBotaoActionPerformed
 
    
 

@@ -5,15 +5,24 @@
  */
 package InterfaceGrafica;
 
+import br.upe.poo.clinica.entidades.Consultas;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioAtualizarConsultas;
+import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioFiltrarConsultas;
+import br.upe.poo.clinica.regraNegocio.Fachada;
+import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author manoel
  */
 public class TelaAtualizarConsulta extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaAtualizarConsulta
-     */
+     
+     private Consultas consulta;
+     private String dia;
+     private String mes;
+     private String hora;
     public TelaAtualizarConsulta() {
         initComponents();
     }
@@ -68,6 +77,11 @@ public class TelaAtualizarConsulta extends javax.swing.JFrame {
         getContentPane().add(cpfPacenteText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 130, -1));
 
         jButton1.setText("filtrar consulta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
 
         diaText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
@@ -83,13 +97,57 @@ public class TelaAtualizarConsulta extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         jButton2.setText("atualizar consulta");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         jButton3.setText("Sair");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 80, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Long cpf = new Long(11);cpf = Long.parseLong(cpfPacenteText.getText());
+        this.consulta = new Consultas();
+        Fachada fachada = new FachadaImplementa();
+        try {
+            this.consulta = fachada.filtrarConsultaCpfPaciente(cpf);
+        } catch (ExceptionRegraNegocioFiltrarConsultas ex) {
+            Logger.getLogger(TelaAtualizarConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dia = String.valueOf(diaText.getSelectedItem());
+        this.mes = String.valueOf(mesText.getSelectedItem());
+        this.hora = String.valueOf(horaText.getSelectedItem());
+        String data = ""+this.dia+"/"+this.mes;
+          
+          this.consulta.setDiaConsulta(data);
+          this.consulta.setHoraConsulta(hora);
+           Fachada fachada = new FachadaImplementa();
+         try {
+             fachada.atualizarConsulta(this.consulta);
+         } catch (ExceptionRegraNegocioAtualizarConsultas ex) {
+             Logger.getLogger(TelaAtualizarConsulta.class.getName()).log(Level.SEVERE, null, ex);
+         }
+           
+        
+             
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
  
 

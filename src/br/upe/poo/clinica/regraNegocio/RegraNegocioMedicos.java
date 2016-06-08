@@ -77,7 +77,7 @@ public class RegraNegocioMedicos implements InterfaceRegraNegocioMedicos {
         if(medico.getCrm()==null) {
             throw new ExceptionRegraNegocioAtualizarMedicos();
         }
-        if(medico.equals(rm.buscarMedicoCpf(medico.getCpf()))==false) {
+        if(medico.equals(rm.buscarMedicoCpf(medico.getCpf()))==true) {
             throw new ExceptionRegraNegocioAtualizarMedicos();
         }   
         else {

@@ -89,7 +89,7 @@ public class RegraNegocioConsultas implements InterfaceRegaNegocioConsultas {
         if(consulta.getDiaConsulta()== null) {
             throw new ExceptionRegraNegocioAtualizarConsultas();
         }
-        if(consulta.equals(rc.filtrarConsultaCpfPaciente(consulta.getPaciente().getCpf()))==false) {
+        if(consulta.equals(rc.filtrarConsultaCpfPaciente(consulta.getPaciente().getCpf()))==true) {
             throw new ExceptionRegraNegocioAtualizarConsultas();
         }
         else {

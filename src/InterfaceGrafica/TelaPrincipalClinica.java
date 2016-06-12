@@ -12,7 +12,6 @@ package InterfaceGrafica;
 public class TelaPrincipalClinica extends javax.swing.JFrame {
 
       private TelaPrincipalPacientes telaPacientes;
-      private TelaPrincipalMedicos telaMedicos;
       private TelaPrincipalConsultas telaConsultas;
       
     
@@ -32,7 +31,6 @@ public class TelaPrincipalClinica extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         PacientesBotao = new javax.swing.JButton();
-        MedicosBotao = new javax.swing.JButton();
         sairBotao = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -69,14 +67,6 @@ public class TelaPrincipalClinica extends javax.swing.JFrame {
         });
         getContentPane().add(PacientesBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        MedicosBotao.setText("Medicos");
-        MedicosBotao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MedicosBotaoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(MedicosBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 80, -1));
-
         sairBotao.setText("Sair");
         sairBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,11 +91,6 @@ public class TelaPrincipalClinica extends javax.swing.JFrame {
           this.telaPacientes.setVisible(true);
     }//GEN-LAST:event_PacientesBotaoActionPerformed
 
-    private void MedicosBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicosBotaoActionPerformed
-        this.telaMedicos = new TelaPrincipalMedicos();
-        this.telaMedicos.setVisible(true);
-    }//GEN-LAST:event_MedicosBotaoActionPerformed
-
     private void sairBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairBotaoActionPerformed
        dispose();
     }//GEN-LAST:event_sairBotaoActionPerformed
@@ -121,7 +106,6 @@ public class TelaPrincipalClinica extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton MedicosBotao;
     private javax.swing.JButton PacientesBotao;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

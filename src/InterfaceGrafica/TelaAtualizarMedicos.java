@@ -122,6 +122,11 @@ public class TelaAtualizarMedicos extends javax.swing.JFrame {
         getContentPane().add(sairBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 70, -1));
 
         limparBotao.setText("limpar textos");
+        limparBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparBotaoActionPerformed(evt);
+            }
+        });
         getContentPane().add(limparBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, -1));
 
         especialidadeText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cardiologista", "pediatra", "otopedista" }));
@@ -196,6 +201,16 @@ public class TelaAtualizarMedicos extends javax.swing.JFrame {
      
        
     }//GEN-LAST:event_especialidadeTextActionPerformed
+
+    private void limparBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparBotaoActionPerformed
+        nomeText.setText("");
+       cpfText.setText("");
+       crmTexto.setText("");
+       enderecoText.setText("");
+       telefoneText.setText("");
+       especialidadeText.setToolTipText("");
+       
+    }//GEN-LAST:event_limparBotaoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

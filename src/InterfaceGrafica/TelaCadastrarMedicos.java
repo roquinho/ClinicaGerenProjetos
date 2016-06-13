@@ -131,6 +131,11 @@ public class TelaCadastrarMedicos extends javax.swing.JFrame {
         getContentPane().add(sairBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 80, -1));
 
         limparText.setText("limpar textos");
+        limparText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparTextActionPerformed(evt);
+            }
+        });
         getContentPane().add(limparText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         pack();
@@ -175,6 +180,16 @@ public class TelaCadastrarMedicos extends javax.swing.JFrame {
              this.especialidade = "ortopedista";
          }
     }//GEN-LAST:event_especialidadeTextActionPerformed
+
+    private void limparTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparTextActionPerformed
+       nomeText.setText("");
+       cpfText.setText("");
+       crmText.setText("");
+       enderecoText.setText("");
+       telefoneText.setText("");
+       especialidadeText.setToolTipText("");
+       
+    }//GEN-LAST:event_limparTextActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

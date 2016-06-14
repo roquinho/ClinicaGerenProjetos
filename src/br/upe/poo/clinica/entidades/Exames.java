@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Exames implements Serializable {
-    //Aline
+    //Aline 
 	private String dataExame;
 	private String horaExame;
 	private String tipoExame;

@@ -3,7 +3,7 @@ package br.upe.poo.clinica.entidades;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
-//Outro teste
+//Outro 
 public class DadosConsultas implements Serializable {
   private Date inicioConsulta;
   private Date fimConsulta;

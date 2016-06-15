@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Exames implements Serializable {
-    //Aline 
+    
 	private String dataExame;
 	private String horaExame;
 	private String tipoExame;
@@ -14,6 +14,7 @@ public class Exames implements Serializable {
         
 	 public Exames() {
           this.paciente = new Pacientes();
+          this.consulta = new Consultas();
 	 }
          
 	 public Exames(String tipoExame,String dataExame,String horaExame,Pacientes paciente) {

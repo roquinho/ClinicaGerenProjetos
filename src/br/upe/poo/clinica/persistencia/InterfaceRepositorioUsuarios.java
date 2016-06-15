@@ -13,6 +13,8 @@ public interface InterfaceRepositorioUsuarios {
     
     public Usuarios buscarUsuarioSenhaNome(String senha,String nome);
     
+    public Usuarios filtrarUsuarioCpf(String cpf);
+    
     public void atualizarUsuario(Usuarios usuario);
     
     public void deletarUsuario(Usuarios usuario);

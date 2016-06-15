@@ -14,6 +14,7 @@ public class Exames implements Serializable {
         
 	 public Exames() {
           this.paciente = new Pacientes();
+          this.consulta = new Consultas();
 	 }
          
 	 public Exames(String tipoExame,String dataExame,String horaExame,Pacientes paciente) {

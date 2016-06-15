@@ -154,6 +154,11 @@ public class FachadaImplementa implements Fachada {
         this.usuarios.deletarUsuario(usuario);
     }
 
+    @Override
+    public Usuarios filtrarUsuarioCpf(String cpf) throws ExceptionRegraNegociofiltrarUsuarios {
+        return this.usuarios.filtrarUsuarioCpf(cpf);
+    }
+
 
     
       

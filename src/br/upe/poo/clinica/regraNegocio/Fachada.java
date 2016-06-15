@@ -62,6 +62,8 @@ public interface Fachada {
     
     public Usuarios buscarUsuarioSenhaNome(String senha,String nome)throws ExceptionRegraNegociofiltrarUsuarios;
     
+    public Usuarios filtrarUsuarioCpf(String cpf)throws ExceptionRegraNegociofiltrarUsuarios;
+    
     public void atualizarUsuario(Usuarios usuario)throws ExceptionRegraNegocioAtualizarUsuarios;
     
     public void deletarUsuario(Usuarios usuario)throws ExceptionRegraNegocioDeletarUsuarios;

@@ -36,9 +36,6 @@ public class RegraNegocioExames implements InterfaceRegraNegocioExames {
         if(exame.getPaciente().getCpf()==null) {
             throw new ExceptionRegraNegocioAgendarExame();
         }
-        if(exame.equals(rne.filtrarExameCpfPaciente(exame.getPaciente().getCpf()))) {
-            throw new ExceptionRegraNegocioAgendarExame();
-        }
         else {
             exame.getPaciente().getExames().add(exame);
             rne.agendarExame(exame);
@@ -85,9 +82,6 @@ public class RegraNegocioExames implements InterfaceRegraNegocioExames {
         if(exame.getPaciente().getCpf()==null) {
             throw new ExceptionRegraNegocioAtualizarExames();
         }
-        if(exame.equals(rne.filtrarExameCpfPaciente(exame.getPaciente().getCpf()))==false) {
-            throw new ExceptionRegraNegocioAtualizarExames();
-        }
         else {
             rne.atualizarExame(exame);
         }
@@ -96,9 +90,6 @@ public class RegraNegocioExames implements InterfaceRegraNegocioExames {
     @Override
     public void deletarExame(Exames exame) throws ExceptionRegraNegocioDeletarExames {
         if(exame == null) {
-            throw new ExceptionRegraNegocioDeletarExames();
-        }
-        if(exame.equals(rne.filtrarExameCpfPaciente(exame.getPaciente().getCpf()))==false) {
             throw new ExceptionRegraNegocioDeletarExames();
         }
         else {

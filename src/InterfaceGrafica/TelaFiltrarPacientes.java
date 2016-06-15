@@ -171,7 +171,7 @@ public class TelaFiltrarPacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_ButoonFiltrarActionPerformed
 
     private void SairBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairBActionPerformed
- dispose();        // TODO add your handling code here:
+ dispose();       
     }//GEN-LAST:event_SairBActionPerformed
 
     private void nomejButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomejButton1ActionPerformed

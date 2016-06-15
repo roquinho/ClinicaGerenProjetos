@@ -18,12 +18,12 @@ import java.util.logging.Logger;
  *
  * @author manoel
  */
-public class TelaUsuarios extends javax.swing.JFrame {
+public class TelaUsuariosCadastrar extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaUsuarios
      */
-    public TelaUsuarios() {
+    public TelaUsuariosCadastrar() {
         initComponents();
     }
 
@@ -105,7 +105,7 @@ public class TelaUsuarios extends javax.swing.JFrame {
         try {
             fachada.cadastrarUsuario(usuario);
         } catch (ExceptionRegraNegocioCadastrarUsuarios ex) {
-            Logger.getLogger(TelaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaUsuariosCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_salvarBotaoActionPerformed
 

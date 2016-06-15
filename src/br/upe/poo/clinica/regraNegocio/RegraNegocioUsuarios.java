@@ -30,7 +30,7 @@ public class RegraNegocioUsuarios implements InterfaceRegraNegocioUsuarios {
        if(usuario.getTipoUsuario()==null) {
            throw new ExceptionRegraNegocioCadastrarUsuarios();
        }
-       if(usuario.equals(ru.buscarUsuarioSenhaNome(usuario.getSenha(),usuario.getNome()))) {
+       if(ru.filtrarUsuarioCpf(usuario.getCpf())!=null) {
            throw new ExceptionRegraNegocioCadastrarUsuarios();
        }
        else {
@@ -52,6 +52,17 @@ public class RegraNegocioUsuarios implements InterfaceRegraNegocioUsuarios {
         }
         return usuario;
     }
+    @Override
+    public Usuarios filtrarUsuarioCpf(String cpf) throws ExceptionRegraNegociofiltrarUsuarios {
+       Usuarios usuario = new Usuarios();
+         if(cpf == null) {
+             throw new ExceptionRegraNegociofiltrarUsuarios();
+         }
+         else {
+            usuario = ru.filtrarUsuarioCpf(cpf);
+         }
+         return usuario;
+    }
 
     @Override
     public void atualizarUsuario(Usuarios usuario) throws ExceptionRegraNegocioAtualizarUsuarios {
@@ -67,8 +78,8 @@ public class RegraNegocioUsuarios implements InterfaceRegraNegocioUsuarios {
        if(usuario.getTipoUsuario()==null) {
            throw new ExceptionRegraNegocioAtualizarUsuarios();
        }
-       if(usuario.equals(ru.buscarUsuarioSenhaNome(usuario.getSenha(), usuario.getNome()))==false) {
-          throw new ExceptionRegraNegocioAtualizarUsuarios();
+       if(ru.filtrarUsuarioCpf(usuario.getCpf())==null) {
+           throw new ExceptionRegraNegocioAtualizarUsuarios();
        }
        else {
           ru.atualizarUsuario(usuario);
@@ -80,12 +91,14 @@ public class RegraNegocioUsuarios implements InterfaceRegraNegocioUsuarios {
         if(usuario == null) {
             throw new ExceptionRegraNegocioDeletarUsuarios();
         }
-        if(usuario.equals(ru.buscarUsuarioSenhaNome(usuario.getSenha(), usuario.getNome()))==false) {
-          throw new ExceptionRegraNegocioDeletarUsuarios();
+       if(ru.filtrarUsuarioCpf(usuario.getCpf())==null) {
+           throw new ExceptionRegraNegocioDeletarUsuarios();
        }
         else {
             ru.deletarUsuario(usuario);
         }
     }
+
+
     
 }

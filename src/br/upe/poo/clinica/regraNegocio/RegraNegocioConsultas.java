@@ -36,9 +36,6 @@ public class RegraNegocioConsultas implements InterfaceRegaNegocioConsultas {
         if(consulta.getDiaConsulta()== null) {
             throw new ExceptionRegraNegocioAgendarConsultas();
         }
-        if(consulta.equals(rc.filtrarConsultaCpfPaciente(consulta.getPaciente().getCpf()))) {
-            throw new ExceptionRegraNegocioAgendarConsultas();
-        }
         else {
             consulta.getPaciente().getConsultas().add(consulta);
             consulta.getMedico().getConsultas().add(consulta);
@@ -89,9 +86,6 @@ public class RegraNegocioConsultas implements InterfaceRegaNegocioConsultas {
         if(consulta.getDiaConsulta()== null) {
             throw new ExceptionRegraNegocioAtualizarConsultas();
         }
-        if(consulta.equals(rc.filtrarConsultaCpfPaciente(consulta.getPaciente().getCpf()))==true) {
-            throw new ExceptionRegraNegocioAtualizarConsultas();
-        }
         else {
             rc.atualizarConsulta(consulta);
         }
@@ -100,9 +94,6 @@ public class RegraNegocioConsultas implements InterfaceRegaNegocioConsultas {
     @Override
     public void deletarConsulta(Consultas consulta) throws ExceptionRegraNegocioDeletarConsultas {
         if(consulta == null) {
-            throw new ExceptionRegraNegocioDeletarConsultas();
-        }
-        if(consulta.equals(rc.filtrarConsultaCpfPaciente(consulta.getPaciente().getCpf()))==false) {
             throw new ExceptionRegraNegocioDeletarConsultas();
         }
         else {

@@ -16,8 +16,9 @@ public class TelaPrincipalAdministradores extends javax.swing.JFrame {
 
       private TelaPrincipalPacientes telaPacientes;
       private TelaPrincipalMedicos telaMedicos;
-      private TelaUsuarios usuarios;
+      private TelaPrincipalUsuarios usuarios;
       private TelaPrincipalConsultas telaConsultas;
+      private TelaPrincipalExames telaExames;
     /**
      * Creates new form TelaPrincipalAdministradores
      */
@@ -42,6 +43,7 @@ public class TelaPrincipalAdministradores extends javax.swing.JFrame {
         usuariosBotao = new javax.swing.JButton();
         sairBotao = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,6 +120,14 @@ public class TelaPrincipalAdministradores extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
 
+        jButton2.setText("Exames");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 80, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -136,7 +146,7 @@ public class TelaPrincipalAdministradores extends javax.swing.JFrame {
     }//GEN-LAST:event_sairBotaoActionPerformed
 
     private void usuariosBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosBotaoActionPerformed
-        this.usuarios = new TelaUsuarios();
+        this.usuarios = new TelaPrincipalUsuarios();
         this.usuarios.setVisible(true);
     }//GEN-LAST:event_usuariosBotaoActionPerformed
 
@@ -145,11 +155,17 @@ public class TelaPrincipalAdministradores extends javax.swing.JFrame {
           this.telaConsultas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.telaExames = new TelaPrincipalExames();
+        this.telaExames.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MedicosBotao;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

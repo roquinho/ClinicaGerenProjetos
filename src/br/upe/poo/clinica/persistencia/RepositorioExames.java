@@ -125,7 +125,7 @@ public class RepositorioExames implements InterfaceRepositorioExames{
     public void atualizarExame(Exames exame) {
         this.conexao = new ConexaoBancoDeDados().conectar("root", "12345","localhost", "clinica");
          try{
-	    String sql = "update consultas set hora_exame=?,"+"dia_exame=? "+"where cpf_paciente=?";
+	    String sql = "update Exames set hora_exame=?,"+"dia_exame=? ,tipo_exame=?"+"where cpf_paciente=?";
 	       this.stm = conexao.prepareStatement(sql);
         
      this.stm.setString(1,((Exames) exame).getHoraExame());

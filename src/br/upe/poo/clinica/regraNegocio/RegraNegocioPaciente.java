@@ -28,7 +28,7 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
         if(paciente.getCpf()==null) {
             throw new ExceptionRegraNegocioPacientesCadastrar();
         }
-        if(paciente.equals(rp.buscarPacienteCpf(paciente.getCpf()))) {
+        if(rp.buscarPacienteCpf(paciente.getCpf())!=null) {
             throw new ExceptionRegraNegocioPacientesCadastrar();
         } 
         else {
@@ -72,7 +72,7 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
         if(paciente.getCpf()==null) {
             throw new ExceptionRegraNegocioAtualizarPacientes();
         }
-        if(paciente.equals(rp.buscarPacienteCpf(paciente.getCpf()))==true) {
+        if(rp.buscarPacienteCpf(paciente.getCpf())==null) {
             throw new ExceptionRegraNegocioAtualizarPacientes();
         }
         else {
@@ -86,8 +86,8 @@ public class RegraNegocioPaciente implements InterfaceRegraNegocioPacientes{
        if(paciente == null) {
            throw new ExceptionRegraNegocioDeletarPacientes();
        }
-       if(paciente.equals(rp.buscarPacienteCpf(paciente.getCpf()))==false) {
-           throw new ExceptionRegraNegocioDeletarPacientes();
+       if(rp.buscarPacienteCpf(paciente.getCpf())==null) {
+            throw new ExceptionRegraNegocioDeletarPacientes();
         }
        else {
            rp.deletarPaciente(paciente);

@@ -1,10 +1,10 @@
   
 package InterfaceGrafica;
 
-import br.upe.poo.clinica.entidades.Medicos;
-import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioCadastrarMedicos;
-import br.upe.poo.clinica.regraNegocio.Fachada;
-import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
+import brr.upe.poo.clinica.entidades.Medicos;
+import brr.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioCadastrarMedicos;
+import brr.upe.poo.clinica.regraNegocio.Fachada;
+import brr.upe.poo.clinica.regraNegocio.FachadaImplementa;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

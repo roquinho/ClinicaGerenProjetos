@@ -5,13 +5,13 @@
  */
 package InterfaceGrafica;
 
-import br.upe.poo.clinica.entidades.Pacientes;
-import br.upe.poo.clinica.persistencia.InterfaceRepositorioPacientes;
-import br.upe.poo.clinica.persistencia.RepositorioPacientes;
-import br.upe.poo.clinica.regraNegocio.Fachada;
-import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
-import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioDeletarPacientes;
-import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioPacienteBuscarPaciente;
+import brr.upe.poo.clinica.entidades.Pacientes;
+import brr.upe.poo.clinica.persistencia.InterfaceRepositorioPacientes;
+import brr.upe.poo.clinica.persistencia.RepositorioPacientes;
+import brr.upe.poo.clinica.regraNegocio.Fachada;
+import brr.upe.poo.clinica.regraNegocio.FachadaImplementa;
+import brr.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioDeletarPacientes;
+import brr.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioPacienteBuscarPaciente;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -5,9 +5,9 @@
  */
 package InterfaceGrafica;
 
-import br.upe.poo.clinica.entidades.Usuarios;
-import br.upe.poo.clinica.persistencia.InterfaceRepositorioUsuarios;
-import br.upe.poo.clinica.persistencia.RepositorioUsuarios;
+import brr.upe.poo.clinica.entidades.Usuarios;
+import brr.upe.poo.clinica.persistencia.InterfaceRepositorioUsuarios;
+import brr.upe.poo.clinica.persistencia.RepositorioUsuarios;
 import javax.swing.JOptionPane;
 
 /**

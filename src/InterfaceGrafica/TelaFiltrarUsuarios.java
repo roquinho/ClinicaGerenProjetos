@@ -5,10 +5,10 @@
  */
 package InterfaceGrafica;
 
-import br.upe.poo.clinica.entidades.Usuarios;
-import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegociofiltrarUsuarios;
-import br.upe.poo.clinica.regraNegocio.Fachada;
-import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
+import brr.upe.poo.clinica.entidades.Usuarios;
+import brr.upe.poo.clinica.regraNegocio.ExceptionRegraNegociofiltrarUsuarios;
+import brr.upe.poo.clinica.regraNegocio.Fachada;
+import brr.upe.poo.clinica.regraNegocio.FachadaImplementa;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -5,11 +5,11 @@
  */
 package InterfaceGrafica;
 
-import br.upe.poo.clinica.entidades.Exames;
-import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioAtualizarExames;
-import br.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioFiltrarExame;
-import br.upe.poo.clinica.regraNegocio.Fachada;
-import br.upe.poo.clinica.regraNegocio.FachadaImplementa;
+import brr.upe.poo.clinica.entidades.Exames;
+import brr.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioAtualizarExames;
+import brr.upe.poo.clinica.regraNegocio.ExceptionRegraNegocioFiltrarExame;
+import brr.upe.poo.clinica.regraNegocio.Fachada;
+import brr.upe.poo.clinica.regraNegocio.FachadaImplementa;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

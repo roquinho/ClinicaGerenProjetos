@@ -1,6 +1,6 @@
 package InterfaceGrafica;
 
-import br.upe.poo.clinica.entidades.Usuarios;
+import brr.upe.poo.clinica.entidades.Usuarios;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
